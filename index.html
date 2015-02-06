@@ -38,22 +38,25 @@
     <div class="page-wrapper">
       <div class="dark-box"></div>
       <div class="content">
-        <h1 id='introduction'>Introduction</h1>
-<p>Welcome to the MojoPages API documentation! MojoPages is a local business search application which uses social media to provide relavant and interesting results. The API is RESTful and enables adding, updating or delete business listing data on <a href="http://mojopages.com">MojoPages.com</a> and it&rsquo;s properties. The API also allows you to check the status and map your business data to our database as well as retrieve all your business listings within our system. </p>
+        <h1 id="introduction">Introduction</h1>
 
-<p>Sample code is currently available as cURL in the dark area to the right. Requests and responses are all in JSON. </p>
+<p>Welcome to the MojoPages API documentation! MojoPages is a local business search application which uses social media to provide relavant and interesting results. The API is RESTful and enables adding, updating or delete business listing data on <a href="http://mojopages.com">MojoPages.com</a> and it&rsquo;s properties. The API also allows you to check the status and map your business data to our database as well as retrieve all your business listings within our system.</p>
 
-<p>The API base url is: <strong>http://api.mojopages.com/api/v1/</strong></p>
+<p>Sample code is currently available as cURL in the dark area to the right. Requests and responses are all in JSON.</p>
+
+<p>The API base url is: <strong>https://api.mojopages.com/api/v1/</strong></p>
 
 <p>The API is versioned, the current version is 1. This is designated in the url path with /v1</p>
 
 <p>If you have any question please visit <a href="http://help.mojopages.com">our support pages</a>.</p>
-<h1 id='authentication'>Authentication</h1>
+
+<h1 id="authentication">Authentication</h1>
+
 <blockquote>
 <p>To set authorization, use this code:</p>
 </blockquote>
 <pre><code class="highlight shell"><span class="c"># With shell, you can just pass the correct header with each request</span>
-curl http://api.mojopages.com/api/v1/status 
+curl https://api.mojopages.com/api/v1/status
   -H <span class="s2">"Authorization: Token token='YOUR-ACCESS-TOKEN'"</span>
 </code></pre>
 
@@ -71,10 +74,12 @@ curl http://api.mojopages.com/api/v1/status
 
 <p><code class="prettyprint">Authorization: Token token=&quot;YOUR-ACCESS-TOKEN&quot;</code></p>
 
-<p><aside class="notice">
-You must replace <code class="prettyprint">YOUR-ACCESS-TOKEN</code> with your API key.
-</aside></p>
-<h1 id='listing-data-types'>Listing Data Types</h1>
+<aside class="notice">
+You must replace `YOUR-ACCESS-TOKEN` with your API key.
+</aside>
+
+<h1 id="listing-data-types">Listing Data Types</h1>
+
 <blockquote>
 <p>Sample JSON Payload:</p>
 </blockquote>
@@ -97,7 +102,9 @@ You must replace <code class="prettyprint">YOUR-ACCESS-TOKEN</code> with your AP
 </span></code></pre>
 
 <p>Business listings are made up of different pieces of data. These are the excepted base record data for a business. These should be sent in the JSON payload. These are all optional except where requests require a particular parameter. You may also add in any data that is not included specifically here, label the data type appropriatly, we will accept any data you would like to send.</p>
-<h3 id='data-types'>Data Types</h3>
+
+<h3 id="data-types">Data Types</h3>
+
 <table><thead>
 <tr>
 <th>Data Type</th>
@@ -170,11 +177,14 @@ You must replace <code class="prettyprint">YOUR-ACCESS-TOKEN</code> with your AP
 </tr>
 </tbody></table>
 
-          <h1 id='api-v1'>API V1</h1><h2 id='get-status'>Get Status</h2>
+          <h1 id="api-v1">API V1</h1>
+
+<h2 id="get-status">Get Status</h2>
+
 <blockquote>
 <p>Request example</p>
 </blockquote>
-<pre><code class="highlight shell">curl <span class="s2">"http://api.mojopages.com/api/v1/status"</span>
+<pre><code class="highlight shell">curl <span class="s2">"https://api.mojopages.com/api/v1/status"</span>
   -H <span class="s2">"Authorization: Token token="</span>YOUR-ACCESS-TOKEN<span class="s2">""</span>
 </code></pre>
 
@@ -192,9 +202,13 @@ You must replace <code class="prettyprint">YOUR-ACCESS-TOKEN</code> with your AP
 </span></code></pre>
 
 <p>Check the status of the inserted businesses and the current total businesses matched.</p>
-<h3 id='http-request'>HTTP Request</h3>
-<p><code class="prettyprint">GET http://api.mojopages.com/api/v1/status</code></p>
-<h3 id='query-parameters'>Query Parameters</h3>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET https://api.mojopages.com/api/v1/status</code></p>
+
+<h3 id="query-parameters">Query Parameters</h3>
+
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -208,11 +222,13 @@ You must replace <code class="prettyprint">YOUR-ACCESS-TOKEN</code> with your AP
 <td>Access token used to authenticate</td>
 </tr>
 </tbody></table>
-<h2 id='get-listings'>Get Listings</h2>
+
+<h2 id="get-listings">Get Listings</h2>
+
 <blockquote>
 <p>Request example</p>
 </blockquote>
-<pre><code class="highlight shell">curl <span class="s2">"http://api.mojopages.com/api/v1/listings"</span>
+<pre><code class="highlight shell">curl <span class="s2">"https://api.mojopages.com/api/v1/listings"</span>
   -H <span class="s2">"Authorization: Token token="</span>YOUR-ACCESS-TOKEN<span class="s2">""</span>
 </code></pre>
 
@@ -240,9 +256,13 @@ You must replace <code class="prettyprint">YOUR-ACCESS-TOKEN</code> with your AP
 </span></code></pre>
 
 <p>This endpoint retrieves all your existing business listings.</p>
-<h3 id='http-request'>HTTP Request</h3>
-<p><code class="prettyprint">GET http://api.mojopages.com/api/v1/listings</code></p>
-<h3 id='query-parameters'>Query Parameters</h3>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET https://api.mojopages.com/api/v1/listings</code></p>
+
+<h3 id="query-parameters">Query Parameters</h3>
+
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -256,11 +276,13 @@ You must replace <code class="prettyprint">YOUR-ACCESS-TOKEN</code> with your AP
 <td>Access token used to authenticate</td>
 </tr>
 </tbody></table>
-<h2 id='get-a-listing'>Get a Listing</h2>
+
+<h2 id="get-a-listing">Get a Listing</h2>
+
 <blockquote>
 <p>Request example</p>
 </blockquote>
-<pre><code class="highlight shell">curl <span class="s2">"http://api.mojopages.com/api/v1/listing/7d373c1da40cbfc3f165"</span>
+<pre><code class="highlight shell">curl <span class="s2">"https://api.mojopages.com/api/v1/listing/7d373c1da40cbfc3f165"</span>
   -H <span class="s2">"Authorization: Token token="</span>YOUR-ACCESS-TOKEN<span class="s2">""</span>
 </code></pre>
 
@@ -288,9 +310,13 @@ You must replace <code class="prettyprint">YOUR-ACCESS-TOKEN</code> with your AP
 </span></code></pre>
 
 <p>This endpoint retrieves a specific business listings.</p>
-<h3 id='http-request'>HTTP Request</h3>
-<p><code class="prettyprint">GET http://api.mojopages.com/api/v1/listing/:LISTING_ID</code></p>
-<h3 id='query-parameters'>Query Parameters</h3>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET https://api.mojopages.com/api/v1/listing/:LISTING_ID</code></p>
+
+<h3 id="query-parameters">Query Parameters</h3>
+
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -310,14 +336,16 @@ You must replace <code class="prettyprint">YOUR-ACCESS-TOKEN</code> with your AP
 </tr>
 </tbody></table>
 
-<p><aside class="notice">
-You must replace <code class="prettyprint">:LISTING_ID</code> with your business listing id.
-</aside></p>
-<h2 id='get-listing-by-factual-id'>Get Listing by Factual ID</h2>
+<aside class="notice">
+You must replace `:LISTING_ID` with your business listing id.
+</aside>
+
+<h2 id="get-listing-by-factual-id">Get Listing by Factual ID</h2>
+
 <blockquote>
 <p>Request example</p>
 </blockquote>
-<pre><code class="highlight shell">curl <span class="s2">"http://api.mojopages.com/api/v1/listing/693acfb0-a323-44c5-8aa1-75baf9f99f3a/factual"</span>
+<pre><code class="highlight shell">curl <span class="s2">"https://api.mojopages.com/api/v1/listing/693acfb0-a323-44c5-8aa1-75baf9f99f3a/factual"</span>
   -H <span class="s2">"Authorization: Token token="</span>YOUR-ACCESS-TOKEN<span class="s2">""</span>
 </code></pre>
 
@@ -336,9 +364,13 @@ You must replace <code class="prettyprint">:LISTING_ID</code> with your business
 </span></code></pre>
 
 <p>This endpoint retrieves a specific business listings by the Factual ID.</p>
-<h3 id='http-request'>HTTP Request</h3>
-<p><code class="prettyprint">GET http://api.mojopages.com/api/v1/listing/:FACTUAL_LISTING_ID/factual</code></p>
-<h3 id='query-parameters'>Query Parameters</h3>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET https://api.mojopages.com/api/v1/listing/:FACTUAL_LISTING_ID/factual</code></p>
+
+<h3 id="query-parameters">Query Parameters</h3>
+
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -358,16 +390,19 @@ You must replace <code class="prettyprint">:LISTING_ID</code> with your business
 </tr>
 </tbody></table>
 
-<p><aside class="notice">
-You must replace <code class="prettyprint">:FACTUAL_LISTING_ID</code> with the business listings Factual id.
-</aside></p>
-<h2 id='post-a-new-listing'>Post a New Listing</h2>
+<aside class="notice">
+You must replace `:FACTUAL_LISTING_ID` with the business listings Factual id.
+</aside>
+
+<h2 id="post-a-new-listing">Post a New Listing</h2>
+
 <blockquote>
 <p>Request example</p>
 </blockquote>
-<pre><code class="highlight shell">curl <span class="s2">"http://api.mojopages.com/api/v1/listing/7d373c1da40cbfc3f165"</span>
+<pre><code class="highlight shell">curl <span class="s2">"https://api.mojopages.com/api/v1/listing/7d373c1da40cbfc3f165"</span>
   -H <span class="s2">"Authorization: Token token="</span>YOUR-ACCESS-TOKEN<span class="s2">""</span>
-  -X POST -d  <span class="o">{</span><span class="s2">"mojo_id"</span>: 201702, <span class="s2">"name"</span>: <span class="s2">"Piety Hill Cottages"</span>, <span class="s2">"address"</span>: <span class="s2">"523 Sacramento St"</span>, <span class="s2">"tel"</span>: <span class="o">(</span>555<span class="o">)</span> 555-5555, <span class="s2">"locality"</span>: <span class="s2">"Nevada City"</span>, <span class="s2">"region"</span>: <span class="s2">"CA"</span><span class="o">}</span>
+  -H <span class="s2">"Content-Type: application/json"</span>
+  -X POST -d <span class="s1">'{"mojo_id": 201702, "name": "Piety Hill Cottages", "address": "523 Sacramento St", "tel": "(555) 555-5555", "locality": "Nevada City", "region": "CA"}'</span>
 
 </code></pre>
 
@@ -383,9 +418,13 @@ You must replace <code class="prettyprint">:FACTUAL_LISTING_ID</code> with the b
 </span></code></pre>
 
 <p>This endpoint is used to post a new business listings to MojoPages.</p>
-<h3 id='http-request'>HTTP Request</h3>
-<p><code class="prettyprint">POST http://api.mojopages.com/api/v1/listing/:LISTING_ID</code></p>
-<h3 id='query-parameters'>Query Parameters</h3>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">POST https://api.mojopages.com/api/v1/listing/:LISTING_ID</code></p>
+
+<h3 id="query-parameters">Query Parameters</h3>
+
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -405,16 +444,19 @@ You must replace <code class="prettyprint">:FACTUAL_LISTING_ID</code> with the b
 </tr>
 </tbody></table>
 
-<p><aside class="notice">
-You must replace <code class="prettyprint">:LISTING_ID</code> with your business listings id.
-</aside></p>
-<h2 id='update-a-listing'>Update a Listing</h2>
+<aside class="notice">
+You must replace `:LISTING_ID` with your business listings id.
+</aside>
+
+<h2 id="update-a-listing">Update a Listing</h2>
+
 <blockquote>
 <p>Request example</p>
 </blockquote>
-<pre><code class="highlight shell">curl <span class="s2">"http://api.mojopages.com/api/v1/listing/7d373c1da40cbfc3f165"</span>
+<pre><code class="highlight shell">curl <span class="s2">"https://api.mojopages.com/api/v1/listing/7d373c1da40cbfc3f165"</span>
   -H <span class="s2">"Authorization: Token token="</span>YOUR-ACCESS-TOKEN<span class="s2">""</span>
-  -X PUT -d  <span class="o">{</span><span class="s2">"address"</span>: <span class="s2">"523 Sacramento Streeet"</span>, <span class="s2">"tel"</span>: <span class="o">(</span>800<span class="o">)</span> 555-5555,<span class="o">}</span>
+  -H <span class="s2">"Content-Type: application/json"</span>
+  -X PUT -d <span class="s1">'{"address": "523 Sacramento Streeet", "tel": "(800) 555-5555"}'</span>
 
 </code></pre>
 
@@ -430,9 +472,13 @@ You must replace <code class="prettyprint">:LISTING_ID</code> with your business
 </span></code></pre>
 
 <p>This endpoint is used to put updated data for an existing business listing into MojoPages.</p>
-<h3 id='http-request'>HTTP Request</h3>
-<p><code class="prettyprint">PUT http://api.mojopages.com/api/v1/listing/:LISTING_ID</code></p>
-<h3 id='query-parameters'>Query Parameters</h3>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">PUT https://api.mojopages.com/api/v1/listing/:LISTING_ID</code></p>
+
+<h3 id="query-parameters">Query Parameters</h3>
+
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -452,14 +498,16 @@ You must replace <code class="prettyprint">:LISTING_ID</code> with your business
 </tr>
 </tbody></table>
 
-<p><aside class="notice">
-You must replace <code class="prettyprint">:LISTING_ID</code> with your business listings id.
-</aside></p>
-<h2 id='delete-a-listing'>Delete a Listing</h2>
+<aside class="notice">
+You must replace `:LISTING_ID` with your business listings id.
+</aside>
+
+<h2 id="delete-a-listing">Delete a Listing</h2>
+
 <blockquote>
 <p>Request example</p>
 </blockquote>
-<pre><code class="highlight shell">curl <span class="s2">"http://api.mojopages.com/api/v1/listing/7d373c1da40cbfc3f165"</span>
+<pre><code class="highlight shell">curl <span class="s2">"https://api.mojopages.com/api/v1/listing/7d373c1da40cbfc3f165"</span>
   -H <span class="s2">"Authorization: Token token="</span>YOUR-ACCESS-TOKEN<span class="s2">""</span>
 
 </code></pre>
@@ -476,9 +524,13 @@ You must replace <code class="prettyprint">:LISTING_ID</code> with your business
 </span></code></pre>
 
 <p>This endpoint is used to delete an existing business listing from MojoPages.</p>
-<h3 id='http-request'>HTTP Request</h3>
-<p><code class="prettyprint">DELETE http://api.mojopages.com/api/v1/listing/:LISTING_ID</code></p>
-<h3 id='query-parameters'>Query Parameters</h3>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">DELETE https://api.mojopages.com/api/v1/listing/:LISTING_ID</code></p>
+
+<h3 id="query-parameters">Query Parameters</h3>
+
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -498,11 +550,12 @@ You must replace <code class="prettyprint">:LISTING_ID</code> with your business
 </tr>
 </tbody></table>
 
-<p><aside class="notice">
-You must replace <code class="prettyprint">:LISTING_ID</code> with your business listings id.
-</aside></p>
+<aside class="notice">
+You must replace `:LISTING_ID` with your business listings id.
+</aside>
 
-          <h1 id='changelog'>Changelog</h1>
+          <h1 id="changelog">Changelog</h1>
+
 <p>Changes to the API and documentation are below.</p>
 
 <table><thead>
@@ -521,7 +574,8 @@ You must replace <code class="prettyprint">:LISTING_ID</code> with your business
 </tr>
 </tbody></table>
 
-          <h1 id='errors'>Errors</h1>
+          <h1 id="errors">Errors</h1>
+
 <p>MojoPages API uses the following error codes:</p>
 
 <table><thead>
@@ -560,7 +614,8 @@ You must replace <code class="prettyprint">:LISTING_ID</code> with your business
 </tr>
 </tbody></table>
 
-          <h1 id='terms-and-conditions'>Terms and Conditions</h1>
+          <h1 id="terms-and-conditions">Terms and Conditions</h1>
+
 <p>By using this API, you agree to the terms and conditions set forth at <a href="www.mojopages.com/api/terms_and_conditions">www.mojopages.com/terms_and_conditions</a>.</p>
 
       </div>
