@@ -86,16 +86,22 @@ You must replace `YOUR-ACCESS-TOKEN` with your API key.
 <pre><code class="highlight json"><span class="p">[</span><span class="w">
   </span><span class="p">{</span><span class="w">
     </span><span class="s2">"listing_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"f76ae9ceb01cf2904fe2"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Instant Plumbing"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1944 W Coolbrook Ave"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"mojo_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"11079728"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"mojo_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.mojopages.com/biz/instant-phones-phoenix-az/11079728"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Instant Phones"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2415 E Thomas Rd"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"locality"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Pheonix"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"region"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AZ"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"postcode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"85023"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"tel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"(602) 993-3532"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"website"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://mywebsite.com"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"postcode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"85016"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"tel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"(602) 224-9582"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"website"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://www.mycricket.com/"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-112.10158"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="s2">"33.643668"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"facebook_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"568020079969282"</span><span class="w">
+    </span><span class="s2">"facebook_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"111664078919577"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"twitter_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cricketnation"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"google_plus_id"</span><span class="p">:</span><span class="w"> </span><span class="err">NULL</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"instagram_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cricketnation"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2014-11-27T11:35:27.364Z"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
 
@@ -114,6 +120,14 @@ You must replace `YOUR-ACCESS-TOKEN` with your API key.
 <tr>
 <td>listing_id</td>
 <td>Your unique identifier for the listing, used for adding or deleting a record</td>
+</tr>
+<tr>
+<td>mojo_id</td>
+<td>Associated MojoPages ID for listing</td>
+</tr>
+<tr>
+<td>mojo_url</td>
+<td>URL for MojoPages listing</td>
 </tr>
 <tr>
 <td>name</td>
@@ -173,7 +187,11 @@ You must replace `YOUR-ACCESS-TOKEN` with your API key.
 </tr>
 <tr>
 <td>instagram_id</td>
-<td>The Instgram ID or the username for the business</td>
+<td>The Instgram ID or the username for the business listing</td>
+</tr>
+<tr>
+<td>updated_at</td>
+<td>When the listing was last updated</td>
 </tr>
 </tbody></table>
 
@@ -223,7 +241,91 @@ You must replace `YOUR-ACCESS-TOKEN` with your API key.
 </tr>
 </tbody></table>
 
-<h2 id="get-listings">Get Listings</h2>
+<h2 id="get-categories-in-json">Get Categories in JSON</h2>
+
+<blockquote>
+<p>Request example</p>
+</blockquote>
+<pre><code class="highlight shell">curl <span class="s2">"https://api.mojopages.com/api/v1/categories"</span>
+  -H <span class="s2">"Authorization: Token token="</span>YOUR-ACCESS-TOKEN<span class="s2">""</span>
+</code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre><code class="highlight json"><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"category_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"parent_category_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"category_level"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Automotive"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"naic_code"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"sic_code"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+
+<p>Check the status of the inserted businesses and the current total businesses matched.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET https://api.mojopages.com/api/v1/categies</code></p>
+
+<h3 id="query-parameters">Query Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>access_token</td>
+<td>true</td>
+<td>Access token used to authenticate</td>
+</tr>
+</tbody></table>
+
+<h2 id="get-categories-in-csv">Get Categories in CSV</h2>
+
+<blockquote>
+<p>Request example</p>
+</blockquote>
+<pre><code class="highlight shell">curl <span class="s2">"https://api.mojopages.com/api/v1/categories/csv"</span>
+  -H <span class="s2">"Authorization: Token token="</span>YOUR-ACCESS-TOKEN<span class="s2">""</span>
+</code></pre>
+
+<blockquote>
+<p>The above command returns CSV structured like this:</p>
+</blockquote>
+<pre><code class="highlight plaintext">category_id, parent_category_id, category_level, title, naic_code, sic_code
+2,1,1,Automotive,,
+</code></pre>
+
+<p>Check the status of the inserted businesses and the current total businesses matched.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET https://api.mojopages.com/api/v1/categies/csv</code></p>
+
+<h3 id="query-parameters">Query Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>access_token</td>
+<td>true</td>
+<td>Access token used to authenticate</td>
+</tr>
+</tbody></table>
+
+<h2 id="get-listings-in-json">Get Listings in JSON</h2>
 
 <blockquote>
 <p>Request example</p>
@@ -238,18 +340,21 @@ You must replace `YOUR-ACCESS-TOKEN` with your API key.
 <pre><code class="highlight json"><span class="p">[</span><span class="w">
   </span><span class="p">{</span><span class="w">
     </span><span class="s2">"listing_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"f76ae9ceb01cf2904fe2"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"mojo_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">123456</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Instant Plumbing"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1944 W Coolbrook Ave"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"address_extended"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"locality"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"mojo_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"11079728"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"mojo_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.mojopages.com/biz/instant-phones-phoenix-az/11079728"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Instant Phones"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2415 E Thomas Rd"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"locality"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Pheonix"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"region"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AZ"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"postcode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"85023"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"tel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"(602) 993-3532"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"website"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"postcode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"85016"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"tel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"(602) 224-9582"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"website"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://www.mycricket.com/"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-112.10158"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="s2">"33.643668"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"facebook_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"568020079969282"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"facebook_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"111664078919577"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"twitter_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cricketnation"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"google_plus_id"</span><span class="p">:</span><span class="w"> </span><span class="err">NULL</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"instagram_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cricketnation"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2014-11-27T11:35:27.364Z"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
@@ -260,6 +365,44 @@ You must replace `YOUR-ACCESS-TOKEN` with your API key.
 <h3 id="http-request">HTTP Request</h3>
 
 <p><code class="prettyprint">GET https://api.mojopages.com/api/v1/listings</code></p>
+
+<h3 id="query-parameters">Query Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>access_token</td>
+<td>true</td>
+<td>Access token used to authenticate</td>
+</tr>
+</tbody></table>
+
+<h2 id="get-listings-in-csv">Get Listings in CSV</h2>
+
+<blockquote>
+<p>Request example</p>
+</blockquote>
+<pre><code class="highlight shell">curl <span class="s2">"https://api.mojopages.com/api/v1/listings/csv"</span>
+  -H <span class="s2">"Authorization: Token token="</span>YOUR-ACCESS-TOKEN<span class="s2">""</span>
+</code></pre>
+
+<blockquote>
+<p>The above command returns CSV structured like this:</p>
+</blockquote>
+<pre><code class="highlight plaintext">listing_id, mojo_id, mojo_url, name, address, locality, region, postcode, tel, website, longitude, latitude, facebook_id, twitter_id, google_plus_id, instagram_id, updated_at
+f76ae9ceb01cf2904fe2,11079728,https://www.mojopages.com/biz/instant-phones-phoenix-az/11079728,Instant Phones,2415 E Thomas Rd,Pheonix,AZ,85016,(602) 224-9582,http://www.mycricket.com/,-112.10158,33.643668,111664078919577,cricketnation,,cricketnation,2014-11-27T11:35:27.364Z
+</code></pre>
+
+<p>This endpoint retrieves all your existing business listings.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET https://api.mojopages.com/api/v1/listings/csv</code></p>
 
 <h3 id="query-parameters">Query Parameters</h3>
 
@@ -291,20 +434,23 @@ You must replace `YOUR-ACCESS-TOKEN` with your API key.
 </blockquote>
 <pre><code class="highlight json"><span class="p">[</span><span class="w">
   </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"listing_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7d373c1da40cbfc3f165"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"mojo_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1234567</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Carol's Proper Protocol"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1129 E Cambria Ln N"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"address_extended"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"locality"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"region"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IL"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"postcode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"60148"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"tel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"(630) 740-2439"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"website"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://carolsproperprotocol.com/"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-87.989643"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="s2">"41.870809"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"facebook_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2014-11-27T11:07:24.075Z"</span><span class="w">
+    </span><span class="s2">"listing_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"f76ae9ceb01cf2904fe2"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"mojo_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"11079728"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"mojo_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.mojopages.com/biz/instant-phones-phoenix-az/11079728"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Instant Phones"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2415 E Thomas Rd"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"locality"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Pheonix"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"region"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AZ"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"postcode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"85016"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"tel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"(602) 224-9582"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"website"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://www.mycricket.com/"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-112.10158"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="s2">"33.643668"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"facebook_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"111664078919577"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"twitter_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cricketnation"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"google_plus_id"</span><span class="p">:</span><span class="w"> </span><span class="err">NULL</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"instagram_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cricketnation"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2014-11-27T11:35:27.364Z"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
 </span></code></pre>
@@ -354,11 +500,12 @@ You must replace `:LISTING_ID` with your business listing id.
 </blockquote>
 <pre><code class="highlight json"><span class="p">[</span><span class="w">
   </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"mojo_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">201702</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Piety Hill Cottages"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"523 Sacramento St"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"locality"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Nevada City"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"region"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CA"</span><span class="w">
+    </span><span class="s2">"mojo_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"11079728"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"mojo_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.mojopages.com/biz/instant-phones-phoenix-az/11079728"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Instant Phones"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2415 E Thomas Rd"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"locality"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Pheonix"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"region"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AZ"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
 </span></code></pre>
