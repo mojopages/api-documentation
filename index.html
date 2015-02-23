@@ -831,6 +831,117 @@ You must replace `:LISTING_ID` with your business listings id.
 </tr>
 </tbody></table>
 
+<h2 id="post-suppress-a-listing">Post Suppress a Listing</h2>
+
+<blockquote>
+<p>Request example</p>
+</blockquote>
+<pre><code class="highlight shell">curl <span class="s2">"https://api.mojopages.com/api/v1/listing/11079728/suppress/4279039"</span>
+  -H <span class="s2">"Authorization: Token token=YOUR-ACCESS-TOKEN"</span>
+  -X POST
+
+</code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre><code class="highlight json"><span class="p">{</span><span class="w">
+  </span><span class="s2">"response"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>This endpoint is used to redirect or suppress business listings to MojoPages.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">POST https://api.mojopages.com/api/v1/listing/:MOJO_ID/suppress/:DESTINATION_MOJO_ID</code></p>
+
+<h3 id="query-parameters">Query Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>access_token</td>
+<td>true</td>
+<td>Access token used to authenticate</td>
+</tr>
+<tr>
+<td>:MOJO_ID</td>
+<td>true</td>
+<td>Our Mojo ID for the specific business listing being redirected from</td>
+</tr>
+<tr>
+<td>:DESTINATION_MOJO_ID</td>
+<td>true</td>
+<td>Our Mojo ID for the new business listing being redirected to</td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+You must replace `:MOJO_ID` with your duplicate business Mojo id and `:DESTINATION_MOJO_ID` for the business you wish to redirect to.
+</aside>
+
+<h2 id="post-unsuppress-a-listing">Post Unsuppress a Listing</h2>
+
+<blockquote>
+<p>Request example</p>
+</blockquote>
+<pre><code class="highlight shell">curl <span class="s2">"https://api.mojopages.com/api/v1/listing/11079728/unsuppress"</span>
+  -H <span class="s2">"Authorization: Token token=YOUR-ACCESS-TOKEN"</span>
+  -X POST
+
+</code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre><code class="highlight json"><span class="p">{</span><span class="w">
+  </span><span class="s2">"response"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>This endpoint is used to remove a redirect or suppression for a business listings to MojoPages. You need to be the one who originally suppressed the listing in order to unsupress it.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">POST https://api.mojopages.com/api/v1/listing/:MOJO_ID/unsuppress</code></p>
+
+<h3 id="query-parameters">Query Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>access_token</td>
+<td>true</td>
+<td>Access token used to authenticate</td>
+</tr>
+<tr>
+<td>:MOJO_ID</td>
+<td>true</td>
+<td>Our Mojo ID for the specific business listing that needs to no longer be redirected</td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+You must replace `:MOJO_ID` with your non duplicate business Mojo id.
+</aside>
+
           <h1 id="changelog">Changelog</h1>
 
 <p>Changes to the API and documentation are below.</p>
@@ -841,6 +952,10 @@ You must replace `:LISTING_ID` with your business listings id.
 <th>Changes</th>
 </tr>
 </thead><tbody>
+<tr>
+<td>2/23/2015</td>
+<td>Added Suppress and Unsuppress a listing endpoint, corrected errors to api docs</td>
+</tr>
 <tr>
 <td>2/19/2015</td>
 <td>Added Get and Post search endpoint</td>
