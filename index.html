@@ -836,12 +836,12 @@ You must replace `:LISTING_ID` with your business listings id.
 <blockquote>
 <p>Request examples</p>
 </blockquote>
-<pre><code class="highlight shell">curl <span class="s2">"https://api.mojopages.com/api/v1/listing/11079728/suppress"</span>
+<pre><code class="highlight shell">curl <span class="s2">"https://api.mojopages.com/api/v1/listing/11079728/suppress?reason=closed"</span>
   -H <span class="s2">"Authorization: Token token=YOUR-ACCESS-TOKEN"</span>
   -X POST
 
 </code></pre>
-<pre><code class="highlight shell">curl <span class="s2">"https://api.mojopages.com/api/v1/listing/11079728/suppress/4279039"</span>
+<pre><code class="highlight shell">curl <span class="s2">"https://api.mojopages.com/api/v1/listing/11079728/suppress/4279039?reason=duplicate"</span>
   -H <span class="s2">"Authorization: Token token=YOUR-ACCESS-TOKEN"</span>
   -X POST
 
@@ -879,6 +879,11 @@ You must replace `:LISTING_ID` with your business listings id.
 <td>access_token</td>
 <td>true</td>
 <td>Access token used to authenticate</td>
+</tr>
+<tr>
+<td>reason</td>
+<td>false</td>
+<td>You&rsquo;re Reason for wanting to suppress the listing</td>
 </tr>
 <tr>
 <td>:MOJO_ID</td>
