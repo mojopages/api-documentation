@@ -277,7 +277,7 @@ You must replace `YOUR-ACCESS-TOKEN` with your API key.
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
-<p>This endpoint retrieves all your existing business listings.</p>
+<p>This endpoint allows you to search the MojoPages database like you would do on the site but with more specific attributes like Name, Address, Latitude, Longitude and Phone number.</p>
 
 <h3 id="http-request">HTTP Request</h3>
 
@@ -834,8 +834,13 @@ You must replace `:LISTING_ID` with your business listings id.
 <h2 id="post-suppress-a-listing">Post Suppress a Listing</h2>
 
 <blockquote>
-<p>Request example</p>
+<p>Request examples</p>
 </blockquote>
+<pre><code class="highlight shell">curl <span class="s2">"https://api.mojopages.com/api/v1/listing/11079728/suppress"</span>
+  -H <span class="s2">"Authorization: Token token=YOUR-ACCESS-TOKEN"</span>
+  -X POST
+
+</code></pre>
 <pre><code class="highlight shell">curl <span class="s2">"https://api.mojopages.com/api/v1/listing/11079728/suppress/4279039"</span>
   -H <span class="s2">"Authorization: Token token=YOUR-ACCESS-TOKEN"</span>
   -X POST
@@ -853,11 +858,13 @@ You must replace `:LISTING_ID` with your business listings id.
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
-<p>This endpoint is used to redirect or suppress business listings to MojoPages.</p>
+<p>This endpoint is used to to suppress a duplicate or invalid listings on MojoPages. If a listing is SUPPRESSed, we will remove the listing from our site&rsquo;s search results. If a CANONICALLISTING_MOJO_ID is included in the path then a redirect is setup with 301 permenant redirection to the correct listing.</p>
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">POST https://api.mojopages.com/api/v1/listing/:MOJO_ID/suppress/:DESTINATION_MOJO_ID</code></p>
+<p><code class="prettyprint">POST https://api.mojopages.com/api/v1/listing/:MOJO_ID/suppress</code></p>
+
+<p><code class="prettyprint">POST https://api.mojopages.com/api/v1/listing/:MOJO_ID/suppress/:CANONICALLISTING_MOJO_ID</code></p>
 
 <h3 id="query-parameters">Query Parameters</h3>
 
@@ -879,14 +886,14 @@ You must replace `:LISTING_ID` with your business listings id.
 <td>Our Mojo ID for the specific business listing being redirected from</td>
 </tr>
 <tr>
-<td>:DESTINATION_MOJO_ID</td>
-<td>true</td>
-<td>Our Mojo ID for the new business listing being redirected to</td>
+<td>:CANONICALLISTING_MOJO_ID</td>
+<td>false</td>
+<td>The Mojo ID for the destination business listing being redirected to</td>
 </tr>
 </tbody></table>
 
 <aside class="notice">
-You must replace `:MOJO_ID` with your duplicate business Mojo id and `:DESTINATION_MOJO_ID` for the business you wish to redirect to.
+You must replace `:MOJO_ID` with your duplicate business Mojo ID. You can also replace `:CANONICALLISTING_MOJO_ID` for the Mojo ID of the business you wish to redirect to.
 </aside>
 
 <h2 id="post-unsuppress-a-listing">Post Unsuppress a Listing</h2>
