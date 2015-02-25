@@ -242,124 +242,38 @@ You must replace `YOUR-ACCESS-TOKEN` with your API key.
 </tr>
 </tbody></table>
 
-<h2 id="get-a-search-for-listings-in-json">Get a Search for Listings in JSON</h2>
-
-<blockquote>
-<p>Request example</p>
-</blockquote>
-<pre><code class="highlight shell">curl <span class="s2">"https://api.mojopages.com/api/v1/listings/search?name=Instant+Phones&amp;locality=Pheonix&amp;region=AZ"</span>
-  -H <span class="s2">"Authorization: Token token=YOUR-ACCESS-TOKEN"</span>
-</code></pre>
-
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<pre><code class="highlight json"><span class="p">{</span><span class="w">
-  </span><span class="s2">"response"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="s2">"listings"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"mojo_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"11079728"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"mojo_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.mojopages.com/biz/instant-phones-phoenix-az/11079728"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Instant Phones"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2415 E Thomas Rd"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"locality"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Pheonix"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"region"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AZ"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"postcode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"85016"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"tel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"(602) 224-9582"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"website"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://www.mycricket.com/"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-112.10158"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="s2">"33.643668"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2014-11-27T11:35:27.364Z"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">]</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-
-<p>This endpoint allows you to search the MojoPages database like you would do on the site but with more specific attributes like Name, Address, Latitude, Longitude and Phone number.</p>
-
-<h3 id="http-request">HTTP Request</h3>
-
-<p><code class="prettyprint">GET https://api.mojopages.com/api/v1/listings/search</code></p>
-
-<h3 id="query-parameters">Query Parameters</h3>
+<h3 id="status-types">Status Types</h3>
 
 <table><thead>
 <tr>
-<th>Parameter</th>
-<th>Required</th>
+<th>Status Type</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>access_token</td>
-<td>true</td>
-<td>Access token used to authenticate</td>
+<td>api_status</td>
+<td>Tells you development status of api from alpha to beta to finally published</td>
 </tr>
 <tr>
-<td>results</td>
-<td>false</td>
-<td>Number of results to return (default returns one listing)</td>
+<td>partner</td>
+<td>Your Partner company name</td>
 </tr>
 <tr>
-<td>name</td>
-<td>false</td>
-<td>Name of the business</td>
+<td>total_listings</td>
+<td>Total number of listings we or you have imported through our Partner endpoints</td>
 </tr>
 <tr>
-<td>address</td>
-<td>false</td>
-<td>Address of the business</td>
-</tr>
-<tr>
-<td>address_extended</td>
-<td>false</td>
-<td>Second address of the business if there is one</td>
-</tr>
-<tr>
-<td>locality</td>
-<td>false</td>
-<td>City where the business is located</td>
-</tr>
-<tr>
-<td>region</td>
-<td>false</td>
-<td>State in which the business is located, should be 2 character abreviation</td>
-</tr>
-<tr>
-<td>postcode</td>
-<td>false</td>
-<td>Postal code where the business is located, should be a minimum 5 digits</td>
-</tr>
-<tr>
-<td>tel</td>
-<td>false</td>
-<td>Telephone number of the business, should be 10 digits</td>
-</tr>
-<tr>
-<td>website</td>
-<td>false</td>
-<td>URL for the business, include http://</td>
-</tr>
-<tr>
-<td>longitude</td>
-<td>false</td>
-<td>Longitude of the business location</td>
-</tr>
-<tr>
-<td>latitude</td>
-<td>false</td>
-<td>Latitude of the business location</td>
+<td>matched_listings</td>
+<td>Total number of your listings that we&rsquo;ve matched to ours</td>
 </tr>
 </tbody></table>
 
-<h2 id="get-listings-in-json">Get Listings in JSON</h2>
+<h2 id="get-partner-listings-in-json">Get Partner Listings in JSON</h2>
 
 <blockquote>
 <p>Request example</p>
 </blockquote>
-<pre><code class="highlight shell">curl <span class="s2">"https://api.mojopages.com/api/v1/listings"</span>
+<pre><code class="highlight shell">curl <span class="s2">"https://api.mojopages.com/api/v1/partner/listings"</span>
   -H <span class="s1">'Authorization: Token token=YOUR-ACCESS-TOKEN'</span>
 </code></pre>
 
@@ -399,7 +313,7 @@ You must replace `YOUR-ACCESS-TOKEN` with your API key.
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">GET https://api.mojopages.com/api/v1/listings</code></p>
+<p><code class="prettyprint">GET https://api.mojopages.com/api/v1/partner/listings</code></p>
 
 <h3 id="query-parameters">Query Parameters</h3>
 
@@ -417,12 +331,12 @@ You must replace `YOUR-ACCESS-TOKEN` with your API key.
 </tr>
 </tbody></table>
 
-<h2 id="get-listings-in-csv">Get Listings in CSV</h2>
+<h2 id="get-partner-listings-in-csv">Get Partner Listings in CSV</h2>
 
 <blockquote>
 <p>Request example</p>
 </blockquote>
-<pre><code class="highlight shell">curl <span class="s2">"https://api.mojopages.com/api/v1/listings/csv"</span>
+<pre><code class="highlight shell">curl <span class="s2">"https://api.mojopages.com/api/v1/partner/listings/csv"</span>
   -H <span class="s2">"Authorization: Token token=YOUR-ACCESS-TOKEN"</span> &gt;&gt; Listings.csv
 </code></pre>
 
@@ -437,7 +351,7 @@ f76ae9ceb01cf2904fe2,11079728,https://www.mojopages.com/biz/instant-phones-phoen
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">GET https://api.mojopages.com/api/v1/listings/csv</code></p>
+<p><code class="prettyprint">GET https://api.mojopages.com/api/v1/partner/listings/csv</code></p>
 
 <h3 id="query-parameters">Query Parameters</h3>
 
@@ -455,12 +369,12 @@ f76ae9ceb01cf2904fe2,11079728,https://www.mojopages.com/biz/instant-phones-phoen
 </tr>
 </tbody></table>
 
-<h2 id="get-a-listing">Get a Listing</h2>
+<h2 id="get-a-partner-listing">Get a Partner Listing</h2>
 
 <blockquote>
 <p>Request example</p>
 </blockquote>
-<pre><code class="highlight shell">curl <span class="s2">"https://api.mojopages.com/api/v1/listing/7d373c1da40cbfc3f165"</span>
+<pre><code class="highlight shell">curl <span class="s2">"https://api.mojopages.com/api/v1/partner/listing/7d373c1da40cbfc3f165"</span>
   -H <span class="s2">"Authorization: Token token=YOUR-ACCESS-TOKEN"</span>
 </code></pre>
 
@@ -497,7 +411,7 @@ f76ae9ceb01cf2904fe2,11079728,https://www.mojopages.com/biz/instant-phones-phoen
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">GET https://api.mojopages.com/api/v1/listing/:LISTING_ID</code></p>
+<p><code class="prettyprint">GET https://api.mojopages.com/api/v1/partner/listing/:LISTING_ID</code></p>
 
 <h3 id="query-parameters">Query Parameters</h3>
 
@@ -524,70 +438,12 @@ f76ae9ceb01cf2904fe2,11079728,https://www.mojopages.com/biz/instant-phones-phoen
 You must replace `:LISTING_ID` with your business listing id.
 </aside>
 
-<h2 id="get-listing-by-factual-id">Get Listing by Factual ID</h2>
+<h2 id="post-a-new-partner-listing">Post a New Partner Listing</h2>
 
 <blockquote>
 <p>Request example</p>
 </blockquote>
-<pre><code class="highlight shell">curl <span class="s2">"https://api.mojopages.com/api/v1/listing/693acfb0-a323-44c5-8aa1-75baf9f99f3a/factual"</span>
-  -H <span class="s2">"Authorization: Token token=YOUR-ACCESS-TOKEN"</span>
-</code></pre>
-
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<pre><code class="highlight json"><span class="p">{</span><span class="w">
-  </span><span class="s2">"response"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="s2">"listing"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"mojo_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"11079728"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"mojo_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.mojopages.com/biz/instant-phones-phoenix-az/11079728"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Instant Phones"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2415 E Thomas Rd"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"locality"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Pheonix"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"region"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AZ"</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-
-<p>This endpoint retrieves a specific business listings by the Factual ID.</p>
-
-<h3 id="http-request">HTTP Request</h3>
-
-<p><code class="prettyprint">GET https://api.mojopages.com/api/v1/listing/:FACTUAL_LISTING_ID/factual</code></p>
-
-<h3 id="query-parameters">Query Parameters</h3>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Required</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>access_token</td>
-<td>true</td>
-<td>Access token used to authenticate</td>
-</tr>
-<tr>
-<td>:FACTUAL_LISTING_ID</td>
-<td>true</td>
-<td>Factual ID for the specific business listing</td>
-</tr>
-</tbody></table>
-
-<aside class="notice">
-You must replace `:FACTUAL_LISTING_ID` with the business listings Factual id.
-</aside>
-
-<h2 id="post-a-new-listing">Post a New Listing</h2>
-
-<blockquote>
-<p>Request example</p>
-</blockquote>
-<pre><code class="highlight shell">curl <span class="s2">"https://api.mojopages.com/api/v1/listing/7d373c1da40cbfc3f165"</span>
+<pre><code class="highlight shell">curl <span class="s2">"https://api.mojopages.com/api/v1/partner/listing/7d373c1da40cbfc3f165"</span>
   -H <span class="s2">"Authorization: Token token=YOUR-ACCESS-TOKEN"</span>
   -H <span class="s2">"Content-Type: application/json"</span>
   -X POST -d <span class="s1">'{"mojo_id": 201702, "name": "Piety Hill Cottages", "address": "523 Sacramento St", "tel": "(555) 555-5555", "locality": "Nevada City", "region": "CA"}'</span>
@@ -609,7 +465,7 @@ You must replace `:FACTUAL_LISTING_ID` with the business listings Factual id.
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">POST https://api.mojopages.com/api/v1/listing/:LISTING_ID</code></p>
+<p><code class="prettyprint">POST https://api.mojopages.com/api/v1/partner/listing/:LISTING_ID</code></p>
 
 <h3 id="query-parameters">Query Parameters</h3>
 
@@ -636,12 +492,12 @@ You must replace `:FACTUAL_LISTING_ID` with the business listings Factual id.
 You must replace `:LISTING_ID` with your business listings id.
 </aside>
 
-<h2 id="update-a-listing">Update a Listing</h2>
+<h2 id="update-a-partner-listing">Update a Partner Listing</h2>
 
 <blockquote>
 <p>Request example</p>
 </blockquote>
-<pre><code class="highlight shell">curl <span class="s2">"https://api.mojopages.com/api/v1/listing/7d373c1da40cbfc3f165"</span>
+<pre><code class="highlight shell">curl <span class="s2">"https://api.mojopages.com/api/v1/partner/listing/7d373c1da40cbfc3f165"</span>
   -H <span class="s2">"Authorization: Token token=YOUR-ACCESS-TOKEN"</span>
   -H <span class="s2">"Content-Type: application/json"</span>
   -X PUT -d <span class="s1">'{"address": "523 Sacramento Streeet", "tel": "(800) 555-5555"}'</span>
@@ -663,7 +519,7 @@ You must replace `:LISTING_ID` with your business listings id.
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">PUT https://api.mojopages.com/api/v1/listing/:LISTING_ID</code></p>
+<p><code class="prettyprint">PUT https://api.mojopages.com/api/v1/partner/listing/:LISTING_ID</code></p>
 
 <h3 id="query-parameters">Query Parameters</h3>
 
@@ -690,12 +546,12 @@ You must replace `:LISTING_ID` with your business listings id.
 You must replace `:LISTING_ID` with your business listings id.
 </aside>
 
-<h2 id="delete-a-listing">Delete a Listing</h2>
+<h2 id="delete-a-partner-listing">Delete a Partner Listing</h2>
 
 <blockquote>
 <p>Request example</p>
 </blockquote>
-<pre><code class="highlight shell">curl <span class="s2">"https://api.mojopages.com/api/v1/listing/7d373c1da40cbfc3f165"</span>
+<pre><code class="highlight shell">curl <span class="s2">"https://api.mojopages.com/api/v1/partner/listing/7d373c1da40cbfc3f165"</span>
   -H <span class="s2">"Authorization: Token token=YOUR-ACCESS-TOKEN"</span>
 
 </code></pre>
@@ -715,7 +571,7 @@ You must replace `:LISTING_ID` with your business listings id.
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">DELETE https://api.mojopages.com/api/v1/listing/:LISTING_ID</code></p>
+<p><code class="prettyprint">DELETE https://api.mojopages.com/api/v1/partner/listing/:LISTING_ID</code></p>
 
 <h3 id="query-parameters">Query Parameters</h3>
 
@@ -830,6 +686,244 @@ You must replace `:LISTING_ID` with your business listings id.
 <td>Access token used to authenticate</td>
 </tr>
 </tbody></table>
+
+<h2 id="get-a-search-for-listings-in-json">Get a Search for Listings in JSON</h2>
+
+<blockquote>
+<p>Request example</p>
+</blockquote>
+<pre><code class="highlight shell">curl <span class="s2">"https://api.mojopages.com/api/v1/listings/search?name=Instant+Phones&amp;locality=Pheonix&amp;region=AZ"</span>
+  -H <span class="s2">"Authorization: Token token=YOUR-ACCESS-TOKEN"</span>
+</code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre><code class="highlight json"><span class="p">{</span><span class="w">
+  </span><span class="s2">"response"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"listings"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"mojo_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"11079728"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"mojo_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.mojopages.com/biz/instant-phones-phoenix-az/11079728"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Instant Phones"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2415 E Thomas Rd"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"locality"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Pheonix"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"region"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AZ"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"postcode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"85016"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"tel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"(602) 224-9582"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"website"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://www.mycricket.com/"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-112.10158"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="s2">"33.643668"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2014-11-27T11:35:27.364Z"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>This endpoint allows you to search the MojoPages database like you would do on the site but with more specific attributes like Name, Address, Latitude, Longitude and Phone number.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET https://api.mojopages.com/api/v1/listings/search</code></p>
+
+<h3 id="query-parameters">Query Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>access_token</td>
+<td>true</td>
+<td>Access token used to authenticate</td>
+</tr>
+<tr>
+<td>results</td>
+<td>false</td>
+<td>Number of results to return (default returns one listing)</td>
+</tr>
+<tr>
+<td>name</td>
+<td>false</td>
+<td>Name of the business</td>
+</tr>
+<tr>
+<td>address</td>
+<td>false</td>
+<td>Address of the business</td>
+</tr>
+<tr>
+<td>address_extended</td>
+<td>false</td>
+<td>Second address of the business if there is one</td>
+</tr>
+<tr>
+<td>locality</td>
+<td>false</td>
+<td>City where the business is located</td>
+</tr>
+<tr>
+<td>region</td>
+<td>false</td>
+<td>State in which the business is located, should be 2 character abreviation</td>
+</tr>
+<tr>
+<td>postcode</td>
+<td>false</td>
+<td>Postal code where the business is located, should be a minimum 5 digits</td>
+</tr>
+<tr>
+<td>tel</td>
+<td>false</td>
+<td>Telephone number of the business, should be 10 digits</td>
+</tr>
+<tr>
+<td>website</td>
+<td>false</td>
+<td>URL for the business, include http://</td>
+</tr>
+<tr>
+<td>longitude</td>
+<td>false</td>
+<td>Longitude of the business location</td>
+</tr>
+<tr>
+<td>latitude</td>
+<td>false</td>
+<td>Latitude of the business location</td>
+</tr>
+</tbody></table>
+
+<h2 id="get-a-listing">Get a Listing</h2>
+
+<blockquote>
+<p>Request example</p>
+</blockquote>
+<pre><code class="highlight shell">curl <span class="s2">"https://api.mojopages.com/api/v1/listing/11079728"</span>
+  -H <span class="s2">"Authorization: Token token=YOUR-ACCESS-TOKEN"</span>
+</code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre><code class="highlight json"><span class="p">{</span><span class="w">
+  </span><span class="s2">"response"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"listing"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"mojo_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"11079728"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"mojo_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.mojopages.com/biz/instant-phones-phoenix-az/11079728"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Instant Phones"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2415 E Thomas Rd"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"locality"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Pheonix"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"region"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AZ"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"postcode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"85016"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"tel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"(602) 224-9582"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"website"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://www.mycricket.com/"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-112.10158"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="s2">"33.643668"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"facebook_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"111664078919577"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"twitter_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cricketnation"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"google_plus_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"instagram_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cricketnation"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2014-11-27T11:35:27.364Z"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>This endpoint retrieves a specific business listings.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET https://api.mojopages.com/api/v1/listing/:MOJO_ID</code></p>
+
+<h3 id="query-parameters">Query Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>access_token</td>
+<td>true</td>
+<td>Access token used to authenticate</td>
+</tr>
+<tr>
+<td>:MOJO_ID</td>
+<td>true</td>
+<td>Your ID for the specific business listing</td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+You must replace `:MOJO_ID` with your business listing id.
+</aside>
+
+<h2 id="get-a-listing-by-factual-id">Get a Listing by Factual ID</h2>
+
+<blockquote>
+<p>Request example</p>
+</blockquote>
+<pre><code class="highlight shell">curl <span class="s2">"https://api.mojopages.com/api/v1/listing/693acfb0-a323-44c5-8aa1-75baf9f99f3a/factual"</span>
+  -H <span class="s2">"Authorization: Token token=YOUR-ACCESS-TOKEN"</span>
+</code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre><code class="highlight json"><span class="p">{</span><span class="w">
+  </span><span class="s2">"response"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"listing"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"mojo_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"11079728"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"mojo_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.mojopages.com/biz/instant-phones-phoenix-az/11079728"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Instant Phones"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2415 E Thomas Rd"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"locality"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Pheonix"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"region"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AZ"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>This endpoint retrieves a specific business listings by the Factual ID.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET https://api.mojopages.com/api/v1/listing/:FACTUAL_LISTING_ID/factual</code></p>
+
+<h3 id="query-parameters">Query Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>access_token</td>
+<td>true</td>
+<td>Access token used to authenticate</td>
+</tr>
+<tr>
+<td>:FACTUAL_LISTING_ID</td>
+<td>true</td>
+<td>Factual ID for the specific business listing</td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+You must replace `:FACTUAL_LISTING_ID` with the business listings Factual id.
+</aside>
 
 <h2 id="post-suppress-a-listing">Post Suppress a Listing</h2>
 
@@ -954,6 +1048,117 @@ You must replace `:MOJO_ID` with your duplicate business Mojo ID. You can also r
 You must replace `:MOJO_ID` with your non duplicate business Mojo id.
 </aside>
 
+<h2 id="post-claim-a-listing">Post Claim a Listing</h2>
+
+<blockquote>
+<p>Request examples</p>
+</blockquote>
+<pre><code class="highlight shell">curl <span class="s2">"https://api.mojopages.com/api/v1/listing/11079728/claim/7d373c1da40cbfc3f165"</span>
+  -H <span class="s2">"Authorization: Token token=YOUR-ACCESS-TOKEN"</span>
+  -X POST
+
+</code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre><code class="highlight json"><span class="p">{</span><span class="w">
+  </span><span class="s2">"response"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>This endpoint is used to to claim and associate a partner listing to a listing on MojoPages. You will receive an error message if the listing is already claimed</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">POST https://api.mojopages.com/api/v1/listing/:MOJO_ID/claim/:LISTING_ID</code></p>
+
+<h3 id="query-parameters">Query Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>access_token</td>
+<td>true</td>
+<td>Access token used to authenticate</td>
+</tr>
+<tr>
+<td>:MOJO_ID</td>
+<td>true</td>
+<td>Mojo ID for the specific business listing shown on MojoPages</td>
+</tr>
+<tr>
+<td>:LISTING_ID</td>
+<td>True</td>
+<td>Partner Listing ID that needs to be associated to Mojo ID</td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+You must replace `:MOJO_ID` with the relevant MojoPages ID and replace `:LISTING_ID` for the Partner Listing ID of the business you imported.
+</aside>
+
+<h2 id="post-unclaim-a-listing">Post Unclaim a Listing</h2>
+
+<blockquote>
+<p>Request example</p>
+</blockquote>
+<pre><code class="highlight shell">curl <span class="s2">"https://api.mojopages.com/api/v1/listing/11079728/unclaim"</span>
+  -H <span class="s2">"Authorization: Token token=YOUR-ACCESS-TOKEN"</span>
+  -X POST
+
+</code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre><code class="highlight json"><span class="p">{</span><span class="w">
+  </span><span class="s2">"response"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>This endpoint is used to to unclaim a partner listing from a listing on MojoPages. You will receive an error message if you were not the one to originally claim the listing.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">POST https://api.mojopages.com/api/v1/listing/:MOJO_ID/unclaim</code></p>
+
+<h3 id="query-parameters">Query Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>access_token</td>
+<td>true</td>
+<td>Access token used to authenticate</td>
+</tr>
+<tr>
+<td>:MOJO_ID</td>
+<td>true</td>
+<td>Mojo ID for the specific business listing shown on MojoPages</td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+You must replace `:MOJO_ID` with the relevant MojoPages ID.
+</aside>
+
           <h1 id="changelog">Changelog</h1>
 
 <p>Changes to the API and documentation are below.</p>
@@ -965,8 +1170,12 @@ You must replace `:MOJO_ID` with your non duplicate business Mojo id.
 </tr>
 </thead><tbody>
 <tr>
+<td>2/24/2015</td>
+<td>Added Claim and Unclaim a listing endpoints, reorganized partner api end points to avoid confusion.</td>
+</tr>
+<tr>
 <td>2/23/2015</td>
-<td>Added Suppress and Unsuppress a listing endpoint, corrected errors to api docs</td>
+<td>Added Suppress and Unsuppress a listing endpoints, corrected errors to api docs</td>
 </tr>
 <tr>
 <td>2/19/2015</td>
