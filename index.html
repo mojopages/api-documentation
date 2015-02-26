@@ -101,6 +101,7 @@ You must replace `YOUR-ACCESS-TOKEN` with your API key.
     </span><span class="s2">"twitter_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cricketnation"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"google_plus_id"</span><span class="p">:</span><span class="w"> </span><span class="err">NULL</span><span class="p">,</span><span class="w">
     </span><span class="s2">"instagram_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cricketnation"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AVAILABLE"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2014-11-27T11:35:27.364Z"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
@@ -188,6 +189,10 @@ You must replace `YOUR-ACCESS-TOKEN` with your API key.
 <tr>
 <td>instagram_id</td>
 <td>The Instgram ID or the username for the business listing</td>
+</tr>
+<tr>
+<td>status</td>
+<td>Statuses of SUPPRESSED, CLAIMED or AVAILABLE can be given for listing</td>
 </tr>
 <tr>
 <td>updated_at</td>
@@ -302,6 +307,7 @@ You must replace `YOUR-ACCESS-TOKEN` with your API key.
       </span><span class="s2">"twitter_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cricketnation"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"google_plus_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
       </span><span class="s2">"instagram_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cricketnation"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AVAILABLE"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2014-11-27T11:35:27.364Z"</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
@@ -402,6 +408,7 @@ f76ae9ceb01cf2904fe2,11079728,https://www.mojopages.com/biz/instant-phones-phoen
     </span><span class="s2">"twitter_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cricketnation"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"google_plus_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="s2">"instagram_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cricketnation"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AVAILABLE"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2014-11-27T11:35:27.364Z"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -492,6 +499,107 @@ You must replace `:LISTING_ID` with your business listing id.
 You must replace `:LISTING_ID` with your business listings id.
 </aside>
 
+<h3 id="available-json-listing-values">Available JSON Listing Values</h3>
+
+<table><thead>
+<tr>
+<th>Listing Value</th>
+<th>required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>listing_id</td>
+<td>true</td>
+<td>Your unique identifier for the listing, used for adding or deleting a record</td>
+</tr>
+<tr>
+<td>mojo_id</td>
+<td>false</td>
+<td>Associated MojoPages ID for listing</td>
+</tr>
+<tr>
+<td>name</td>
+<td>true</td>
+<td>Name of the business</td>
+</tr>
+<tr>
+<td>address</td>
+<td>true</td>
+<td>Address of the business</td>
+</tr>
+<tr>
+<td>address_extended</td>
+<td>false</td>
+<td>Second address of the business if there is one</td>
+</tr>
+<tr>
+<td>locality</td>
+<td>true</td>
+<td>City where the business is located</td>
+</tr>
+<tr>
+<td>region</td>
+<td>true</td>
+<td>State in which the business is located, should be 2 character abreviation</td>
+</tr>
+<tr>
+<td>postcode</td>
+<td>true</td>
+<td>Postal code where the business is located, should be a minimum 5 digits</td>
+</tr>
+<tr>
+<td>tel</td>
+<td>false</td>
+<td>Telephone number of the business, should be 10 digits</td>
+</tr>
+<tr>
+<td>fax</td>
+<td>false</td>
+<td>Fax number of the business, should be 10 digits</td>
+</tr>
+<tr>
+<td>website</td>
+<td>false</td>
+<td>URL for the business, include http://</td>
+</tr>
+<tr>
+<td>email</td>
+<td>false</td>
+<td>Email address for the business</td>
+</tr>
+<tr>
+<td>longitude</td>
+<td>false</td>
+<td>Longitude of the business location</td>
+</tr>
+<tr>
+<td>latitude</td>
+<td>false</td>
+<td>Latitude of the business location</td>
+</tr>
+<tr>
+<td>facebook_id</td>
+<td>false</td>
+<td>The Facebook ID or the name of the page for the business</td>
+</tr>
+<tr>
+<td>twitter_id</td>
+<td>false</td>
+<td>Twitter username for the business, without the @ symbol</td>
+</tr>
+<tr>
+<td>google_plus_id</td>
+<td>false</td>
+<td>The Google Plus ID or the name used for the page of the business</td>
+</tr>
+<tr>
+<td>instagram_id</td>
+<td>false</td>
+<td>The Instgram ID or the username for the business listing</td>
+</tr>
+</tbody></table>
+
 <h2 id="update-a-partner-listing">Update a Partner Listing</h2>
 
 <blockquote>
@@ -545,6 +653,107 @@ You must replace `:LISTING_ID` with your business listings id.
 <aside class="notice">
 You must replace `:LISTING_ID` with your business listings id.
 </aside>
+
+<h3 id="available-json-listing-values">Available JSON Listing Values</h3>
+
+<table><thead>
+<tr>
+<th>Listing Value</th>
+<th>required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>listing_id</td>
+<td>true</td>
+<td>Your unique identifier for the listing, used for adding or deleting a record</td>
+</tr>
+<tr>
+<td>mojo_id</td>
+<td>false</td>
+<td>Associated MojoPages ID for listing</td>
+</tr>
+<tr>
+<td>name</td>
+<td>true</td>
+<td>Name of the business</td>
+</tr>
+<tr>
+<td>address</td>
+<td>true</td>
+<td>Address of the business</td>
+</tr>
+<tr>
+<td>address_extended</td>
+<td>false</td>
+<td>Second address of the business if there is one</td>
+</tr>
+<tr>
+<td>locality</td>
+<td>true</td>
+<td>City where the business is located</td>
+</tr>
+<tr>
+<td>region</td>
+<td>true</td>
+<td>State in which the business is located, should be 2 character abreviation</td>
+</tr>
+<tr>
+<td>postcode</td>
+<td>true</td>
+<td>Postal code where the business is located, should be a minimum 5 digits</td>
+</tr>
+<tr>
+<td>tel</td>
+<td>false</td>
+<td>Telephone number of the business, should be 10 digits</td>
+</tr>
+<tr>
+<td>fax</td>
+<td>false</td>
+<td>Fax number of the business, should be 10 digits</td>
+</tr>
+<tr>
+<td>website</td>
+<td>false</td>
+<td>URL for the business, include http://</td>
+</tr>
+<tr>
+<td>email</td>
+<td>false</td>
+<td>Email address for the business</td>
+</tr>
+<tr>
+<td>longitude</td>
+<td>false</td>
+<td>Longitude of the business location</td>
+</tr>
+<tr>
+<td>latitude</td>
+<td>false</td>
+<td>Latitude of the business location</td>
+</tr>
+<tr>
+<td>facebook_id</td>
+<td>false</td>
+<td>The Facebook ID or the name of the page for the business</td>
+</tr>
+<tr>
+<td>twitter_id</td>
+<td>false</td>
+<td>Twitter username for the business, without the @ symbol</td>
+</tr>
+<tr>
+<td>google_plus_id</td>
+<td>false</td>
+<td>The Google Plus ID or the name used for the page of the business</td>
+</tr>
+<tr>
+<td>instagram_id</td>
+<td>false</td>
+<td>The Instgram ID or the username for the business listing</td>
+</tr>
+</tbody></table>
 
 <h2 id="delete-a-partner-listing">Delete a Partner Listing</h2>
 
@@ -716,6 +925,7 @@ You must replace `:LISTING_ID` with your business listings id.
       </span><span class="s2">"website"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://www.mycricket.com/"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-112.10158"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="s2">"33.643668"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AVAILABLE"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2014-11-27T11:35:27.364Z"</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
@@ -831,6 +1041,7 @@ You must replace `:LISTING_ID` with your business listings id.
     </span><span class="s2">"twitter_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cricketnation"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"google_plus_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="s2">"instagram_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cricketnation"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AVAILABLE"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2014-11-27T11:35:27.364Z"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -1169,6 +1380,10 @@ You must replace `:MOJO_ID` with the relevant MojoPages ID.
 <th>Changes</th>
 </tr>
 </thead><tbody>
+<tr>
+<td>2/26/2015</td>
+<td>Added status to returned json, updated available JSON listing values</td>
+</tr>
 <tr>
 <td>2/24/2015</td>
 <td>Added Claim and Unclaim a listing endpoints, reorganized partner api end points to avoid confusion.</td>
