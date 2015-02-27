@@ -102,6 +102,8 @@ You must replace `YOUR-ACCESS-TOKEN` with your API key.
     </span><span class="s2">"google_plus_id"</span><span class="p">:</span><span class="w"> </span><span class="err">NULL</span><span class="p">,</span><span class="w">
     </span><span class="s2">"instagram_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cricketnation"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AVAILABLE"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"matched"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"claimed"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
     </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2014-11-27T11:35:27.364Z"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
@@ -124,7 +126,7 @@ You must replace `YOUR-ACCESS-TOKEN` with your API key.
 </tr>
 <tr>
 <td>mojo_id</td>
-<td>Associated MojoPages ID for listing</td>
+<td>false</td>
 </tr>
 <tr>
 <td>mojo_url</td>
@@ -197,6 +199,14 @@ You must replace `YOUR-ACCESS-TOKEN` with your API key.
 <tr>
 <td>status</td>
 <td>Statuses of SUPPRESSED, CLAIMED or AVAILABLE can be given for listing</td>
+</tr>
+<tr>
+<td>matched</td>
+<td>True or False on whether or not the partner listing is matched</td>
+</tr>
+<tr>
+<td>claimed</td>
+<td>True or False on whether or not the partner has claimed a listing</td>
 </tr>
 <tr>
 <td>updated_at</td>
@@ -311,7 +321,8 @@ You must replace `YOUR-ACCESS-TOKEN` with your API key.
       </span><span class="s2">"twitter_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cricketnation"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"google_plus_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
       </span><span class="s2">"instagram_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cricketnation"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AVAILABLE"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"matched"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"claimed"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
       </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2014-11-27T11:35:27.364Z"</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
@@ -412,7 +423,8 @@ f76ae9ceb01cf2904fe2,11079728,https://www.mojopages.com/biz/instant-phones-phoen
     </span><span class="s2">"twitter_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cricketnation"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"google_plus_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="s2">"instagram_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cricketnation"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AVAILABLE"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"matched"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"claimed"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
     </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2014-11-27T11:35:27.364Z"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -497,6 +509,11 @@ You must replace `:LISTING_ID` with your business listing id.
 <td>true</td>
 <td>Your ID for the specific business listing</td>
 </tr>
+<tr>
+<td>mapped</td>
+<td>false</td>
+<td>Will automatically match the partner listing to a mojo_id when true</td>
+</tr>
 </tbody></table>
 
 <aside class="notice">
@@ -520,7 +537,7 @@ You must replace `:LISTING_ID` with your business listings id.
 <tr>
 <td>mojo_id</td>
 <td>false</td>
-<td>Associated MojoPages ID for listing</td>
+<td>Associated MojoPages ID for listing will match automatically if you include it</td>
 </tr>
 <tr>
 <td>name</td>
@@ -652,6 +669,11 @@ You must replace `:LISTING_ID` with your business listings id.
 <td>true</td>
 <td>Your ID for the specific business listing being updated</td>
 </tr>
+<tr>
+<td>match</td>
+<td>false</td>
+<td>Will automatically match the partner listing to a mojo_id when true</td>
+</tr>
 </tbody></table>
 
 <aside class="notice">
@@ -673,9 +695,9 @@ You must replace `:LISTING_ID` with your business listings id.
 <td>Your unique identifier for the listing, used for adding or deleting a record</td>
 </tr>
 <tr>
-<td>mojo_id</td>
+<td>mapped</td>
 <td>false</td>
-<td>Associated MojoPages ID for listing</td>
+<td>Associated MojoPages ID for listing will match automatically if you include it</td>
 </tr>
 <tr>
 <td>name</td>
@@ -1384,6 +1406,10 @@ You must replace `:MOJO_ID` with the relevant MojoPages ID.
 <th>Changes</th>
 </tr>
 </thead><tbody>
+<tr>
+<td>2/27/2015</td>
+<td>Added match parameter in Post and Update Partner Listings to automatically match your listing</td>
+</tr>
 <tr>
 <td>2/26/2015</td>
 <td>Added status to returned json, updated available JSON listing values</td>
