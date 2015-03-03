@@ -104,6 +104,7 @@ You must replace `YOUR-ACCESS-TOKEN` with your API key.
     </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AVAILABLE"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"mapped"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
     </span><span class="s2">"claimed"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"omit_address"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
     </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2014-11-27T11:35:27.364Z"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
@@ -207,6 +208,10 @@ You must replace `YOUR-ACCESS-TOKEN` with your API key.
 <tr>
 <td>claimed</td>
 <td>True or False on whether or not the partner has claimed a listing</td>
+</tr>
+<tr>
+<td>omit_address</td>
+<td>false</td>
 </tr>
 <tr>
 <td>updated_at</td>
@@ -323,6 +328,7 @@ You must replace `YOUR-ACCESS-TOKEN` with your API key.
       </span><span class="s2">"instagram_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cricketnation"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"mapped"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
       </span><span class="s2">"claimed"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"omit_address"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
       </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2014-11-27T11:35:27.364Z"</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
@@ -364,8 +370,8 @@ You must replace `YOUR-ACCESS-TOKEN` with your API key.
 <blockquote>
 <p>The above command returns CSV structured like this:</p>
 </blockquote>
-<pre><code class="highlight plaintext">listing_id, mojo_id, mojo_url, name, address, locality, region, postcode, tel, website, longitude, latitude, facebook_id, twitter_id, google_plus_id, instagram_id, updated_at
-f76ae9ceb01cf2904fe2,11079728,https://www.mojopages.com/biz/instant-phones-phoenix-az/11079728,Instant Phones,2415 E Thomas Rd,Pheonix,AZ,85016,(602) 224-9582,http://www.mycricket.com/,-112.10158,33.643668,111664078919577,cricketnation,,cricketnation,2014-11-27T11:35:27.364Z
+<pre><code class="highlight plaintext">listing_id, mojo_id, mojo_url, name, address, locality, region, postcode, tel, website, longitude, latitude, facebook_id, twitter_id, google_plus_id, instagram_id, mapped, claimed, omit_address, updated_at
+f76ae9ceb01cf2904fe2, 11079728, https://www.mojopages.com/biz/instant-phones-phoenix-az/11079728, Instant Phones, 2415 E Thomas Rd, Pheonix, AZ, 85016, (602) 224-9582, http://www.mycricket.com/, -112.10158,33.643668, 111664078919577, cricketnation, , cricketnation, false, false, false, 2014-11-27T11:35:27.364Z
 </code></pre>
 
 <p>This endpoint retrieves all your existing business listings.</p>
@@ -425,6 +431,7 @@ f76ae9ceb01cf2904fe2,11079728,https://www.mojopages.com/biz/instant-phones-phoen
     </span><span class="s2">"instagram_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cricketnation"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"mapped"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
     </span><span class="s2">"claimed"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"omit_address"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
     </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2014-11-27T11:35:27.364Z"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -540,11 +547,6 @@ You must replace `:LISTING_ID` with your business listings id.
 <td>Associated MojoPages ID for listing will map automatically if you include it</td>
 </tr>
 <tr>
-<td>omit_address</td>
-<td>false</td>
-<td>Boolean for omitting the address from the listing (default: false)</td>
-</tr>
-<tr>
 <td>name</td>
 <td>true</td>
 <td>Name of the business</td>
@@ -623,6 +625,11 @@ You must replace `:LISTING_ID` with your business listings id.
 <td>instagram_id</td>
 <td>false</td>
 <td>The Instgram ID or the username for the business listing</td>
+</tr>
+<tr>
+<td>omit_address</td>
+<td>false</td>
+<td>Boolean for omitting the address from the listing (default: false)</td>
 </tr>
 </tbody></table>
 
@@ -705,11 +712,6 @@ You must replace `:LISTING_ID` with your business listings id.
 <td>Associated MojoPages ID for listing will map automatically if you include it</td>
 </tr>
 <tr>
-<td>omit_address</td>
-<td>false</td>
-<td>Boolean for omitting the address from the listing (default: false)</td>
-</tr>
-<tr>
 <td>name</td>
 <td>true</td>
 <td>Name of the business</td>
@@ -788,6 +790,11 @@ You must replace `:LISTING_ID` with your business listings id.
 <td>instagram_id</td>
 <td>false</td>
 <td>The Instgram ID or the username for the business listing</td>
+</tr>
+<tr>
+<td>omit_address</td>
+<td>false</td>
+<td>Boolean for omitting the address from the listing (default: false)</td>
 </tr>
 </tbody></table>
 
@@ -962,6 +969,7 @@ You must replace `:LISTING_ID` with your business listings id.
       </span><span class="s2">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-112.10158"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="s2">"33.643668"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AVAILABLE"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"omit_address"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
       </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2014-11-27T11:35:27.364Z"</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
@@ -1078,6 +1086,7 @@ You must replace `:LISTING_ID` with your business listings id.
     </span><span class="s2">"google_plus_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="s2">"instagram_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cricketnation"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AVAILABLE"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"omit_address"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
     </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2014-11-27T11:35:27.364Z"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -1416,6 +1425,10 @@ You must replace `:MOJO_ID` with the relevant MojoPages ID.
 <th>Changes</th>
 </tr>
 </thead><tbody>
+<tr>
+<td>3/3/2015</td>
+<td>Updated match to map and added omit_address value</td>
+</tr>
 <tr>
 <td>2/27/2015</td>
 <td>Added match parameter in Post and Update Partner Listings to automatically match your listing</td>
