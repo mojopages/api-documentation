@@ -105,6 +105,19 @@ You must replace `YOUR-ACCESS-TOKEN` with your API key.
     </span><span class="s2">"mapped"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
     </span><span class="s2">"claimed"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
     </span><span class="s2">"omit_address"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"hours"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"sunday"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">[</span><span class="w">
+          </span><span class="s2">"closed"</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"monday"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">[</span><span class="w">
+          </span><span class="s2">"8:00"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"16:00"</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
     </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2014-11-27T11:35:27.364Z"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
@@ -212,6 +225,10 @@ You must replace `YOUR-ACCESS-TOKEN` with your API key.
 <tr>
 <td>omit_address</td>
 <td>Boolean for omitting the address from the listing (default: false)</td>
+</tr>
+<tr>
+<td>hours</td>
+<td>The Hours a business is open or closed represented by a hash of multi dimensional arrays</td>
 </tr>
 <tr>
 <td>updated_at</td>
@@ -329,6 +346,19 @@ You must replace `YOUR-ACCESS-TOKEN` with your API key.
       </span><span class="s2">"mapped"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
       </span><span class="s2">"claimed"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
       </span><span class="s2">"omit_address"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"hours"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"sunday"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"closed"</span><span class="w">
+          </span><span class="p">]</span><span class="w">
+          </span><span class="p">],</span><span class="w">
+        </span><span class="s2">"monday"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"8:00"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"16:00"</span><span class="w">
+          </span><span class="p">]</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+      </span><span class="p">},</span><span class="w">
       </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2014-11-27T11:35:27.364Z"</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
@@ -432,6 +462,19 @@ f76ae9ceb01cf2904fe2, 11079728, https://www.mojopages.com/biz/instant-phones-pho
     </span><span class="s2">"mapped"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
     </span><span class="s2">"claimed"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
     </span><span class="s2">"omit_address"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"hours"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"sunday"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">[</span><span class="w">
+          </span><span class="s2">"closed"</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"monday"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">[</span><span class="w">
+          </span><span class="s2">"8:00"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"16:00"</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
     </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2014-11-27T11:35:27.364Z"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -476,7 +519,7 @@ You must replace `:LISTING_ID` with your business listing id.
 <pre><code class="highlight shell">curl <span class="s2">"https://api.mojopages.com/api/v1/partner/listing/7d373c1da40cbfc3f165"</span>
   -H <span class="s2">"Authorization: Token token=YOUR-ACCESS-TOKEN"</span>
   -H <span class="s2">"Content-Type: application/json"</span>
-  -X POST -d <span class="s1">'{"mojo_id": 201702, "name": "Piety Hill Cottages", "address": "523 Sacramento St", "tel": "(555) 555-5555", "locality": "Nevada City", "region": "CA"}'</span>
+  -X POST -d <span class="s1">'{"mojo_id": 201702, "name": "Piety Hill Cottages", "address": "523 Sacramento St", "tel": "(555) 555-5555", "locality": "Nevada City", "region": "CA", "hours": {"sunday":[["closed"]], "monday": [["8:00","16:00"]]}}'</span>
 
 </code></pre>
 
@@ -631,6 +674,11 @@ You must replace `:LISTING_ID` with your business listings id.
 <td>false</td>
 <td>Boolean for omitting the address from the listing (default: false)</td>
 </tr>
+<tr>
+<td>hours</td>
+<td>false</td>
+<td>The Hours a business is open or closed represented by a hash of multi dimensional arrays</td>
+</tr>
 </tbody></table>
 
 <h2 id="update-a-partner-listing">Update a Partner Listing</h2>
@@ -641,7 +689,7 @@ You must replace `:LISTING_ID` with your business listings id.
 <pre><code class="highlight shell">curl <span class="s2">"https://api.mojopages.com/api/v1/partner/listing/7d373c1da40cbfc3f165"</span>
   -H <span class="s2">"Authorization: Token token=YOUR-ACCESS-TOKEN"</span>
   -H <span class="s2">"Content-Type: application/json"</span>
-  -X PUT -d <span class="s1">'{"address": "523 Sacramento Streeet", "tel": "(800) 555-5555"}'</span>
+  -X PUT -d <span class="s1">'{"address": "523 Sacramento Streeet", "tel": "(800) 555-5555", "hours": {"sunday":[["closed"]], "monday": [["8:00","16:00"]]}}'</span>
 
 </code></pre>
 
@@ -795,6 +843,11 @@ You must replace `:LISTING_ID` with your business listings id.
 <td>omit_address</td>
 <td>false</td>
 <td>Boolean for omitting the address from the listing (default: false)</td>
+</tr>
+<tr>
+<td>hours</td>
+<td>false</td>
+<td>The Hours a business is open or closed represented by a hash of multi dimensional arrays</td>
 </tr>
 </tbody></table>
 
@@ -970,6 +1023,19 @@ You must replace `:LISTING_ID` with your business listings id.
       </span><span class="s2">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="s2">"33.643668"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AVAILABLE"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"omit_address"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"hours"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"sunday"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"closed"</span><span class="w">
+          </span><span class="p">]</span><span class="w">
+          </span><span class="p">],</span><span class="w">
+        </span><span class="s2">"monday"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"8:00"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"16:00"</span><span class="w">
+          </span><span class="p">]</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+      </span><span class="p">},</span><span class="w">
       </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2014-11-27T11:35:27.364Z"</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
@@ -1087,6 +1153,19 @@ You must replace `:LISTING_ID` with your business listings id.
     </span><span class="s2">"instagram_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cricketnation"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AVAILABLE"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"omit_address"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"hours"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"sunday"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">[</span><span class="w">
+          </span><span class="s2">"closed"</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"monday"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">[</span><span class="w">
+          </span><span class="s2">"8:00"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"16:00"</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
     </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2014-11-27T11:35:27.364Z"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -1425,6 +1504,10 @@ You must replace `:MOJO_ID` with the relevant MojoPages ID.
 <th>Changes</th>
 </tr>
 </thead><tbody>
+<tr>
+<td>3/26/2015</td>
+<td>Added business hours to Get and Post</td>
+</tr>
 <tr>
 <td>3/3/2015</td>
 <td>Updated match to map and added omit_address value</td>
