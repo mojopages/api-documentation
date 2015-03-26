@@ -236,6 +236,34 @@ You must replace `YOUR-ACCESS-TOKEN` with your API key.
 </tr>
 </tbody></table>
 
+<h1 id="getting-started-workflow">Getting Started Workflow</h1>
+
+<p>There are many ways and uses for the API. Here are the major typical workflows:</p>
+
+<h2 id="add,-search-and-map-listings">Add, Search and Map Listings</h2>
+
+<ol>
+<li><a href="#post-a-new-partner-listing">Post partner listings</a> - First push all your listings into our database.</li>
+<li><a href="#get-a-search-for-listings-in-json">Search for listings</a> - We recommend when searching using:  Name, Address, Latitude, Longitude and Phone number.</li>
+<li><a href="/#post-claim-a-listing">Post a claim for the listing</a> - Post your listing ID and the Mojo_ID of the listing you want to claim ownership for.
+3.A. <a href="#post-suppress-a-listing">Post a suppress listing</a> - If there are <strong>duplicates</strong> or other issues with listings in our database then supress them.
+3.B. <a href="#update-a-partner-listing">Update partner listing</a> - If a listings status is already claimed then updating it with the you listing ID and Mojo_ID will map the listings and if the listing becomes unclaimed by default it will become your listing.</li>
+<li><a href="#get-partner-listings-in-json">Get partner listings</a> - Lastly this will give you all your listings and the status of those listins in our database.</li>
+</ol>
+
+<h2 id="add-and-automap-listings">Add and Automap Listings</h2>
+
+<p>If you do not manually want to map your listings to the listings in or database you can leave that to us and we will automap them. This is not on by default. To do this you will want to do the following:
+1. <a href="#post-a-new-partner-listing">Post partner listings</a> - First push all your listings into our database. Pass the parameter &ldquo;map=true&rdquo;. We will do our best to map your listing to our listing.
+2. <a href="#get-a-search-for-listings-in-json">Search for listings</a> - We recommend when searching using:  Name, Address, Latitude, Longitude and Phone number.
+2.A. <a href="#post-suppress-a-listing">Post a suppress listing</a> - If there are <strong>duplicates</strong> or other issues with listings in our database then supress them.
+2.B. <a href="#update-a-partner-listing">Update partner listing</a> - If a listings status is already claimed then updating it with the you listing ID and the parameter &ldquo;map=true&rdquo; will automap the listings and if the listing becomes unclaimed by default it will become your listing.
+3. <a href="#get-partner-listings-in-json">Get partner listings</a> - Lastly this will give you all your listings and the status of those listins in our database.</p>
+
+<h2 id="unclaim-listings">Unclaim Listings</h2>
+
+<p>If you no longer manage the clients listing you can <a href="#post-unclaim-a-listing">Unclaim</a> a listing this will keep all updates done to the unclaim point and then remove your claim status from your account and open it back up to be claimed by other partners.</p>
+
           <h1 id="api-v1">API V1</h1>
 
 <h2 id="get-status">Get Status</h2>
