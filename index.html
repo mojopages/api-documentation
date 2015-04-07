@@ -84,6 +84,7 @@ You must replace `YOUR-ACCESS-TOKEN` with your API key.
 <p>Sample JSON Payload:</p>
 </blockquote>
 <pre><code class="highlight json"><span class="p">{</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AVAILABLE"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"listing_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"f76ae9ceb01cf2904fe2"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"mojo_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"11079728"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"mojo_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.mojopages.com/biz/instant-phones-phoenix-az/11079728"</span><span class="p">,</span><span class="w">
@@ -100,7 +101,6 @@ You must replace `YOUR-ACCESS-TOKEN` with your API key.
   </span><span class="s2">"twitter_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cricketnation"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"google_plus_id"</span><span class="p">:</span><span class="w"> </span><span class="err">NULL</span><span class="p">,</span><span class="w">
   </span><span class="s2">"instagram_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cricketnation"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AVAILABLE"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"mapped"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
   </span><span class="s2">"claimed"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
   </span><span class="s2">"omit_address"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
@@ -124,6 +124,32 @@ You must replace `YOUR-ACCESS-TOKEN` with your API key.
 
 <p>Business listings are made up of different pieces of data. These are the excepted base record data for a business. These should be sent in the JSON payload. These are all optional except where requests require a particular parameter. You may also add in any data that is not included specifically here, label the data type appropriatly, we will accept any data you would like to send.</p>
 
+<h3 id="status-types">Status Types</h3>
+
+<table><thead>
+<tr>
+<th>Status Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>AVAILABLE</td>
+<td>This listing is not currently a claimed listing, it may be successfully claimed by you.</td>
+</tr>
+<tr>
+<td>ACTIVE</td>
+<td>This listing is fully activated and live on MojoPages.com.</td>
+</tr>
+<tr>
+<td>SUPPRESSED</td>
+<td>The listing is suppressed, which means it should not appear in our search results or have a detail page.</td>
+</tr>
+<tr>
+<td>BLOCKED</td>
+<td>The listing has an existing relationship with another partner and may not be controlled by you.</td>
+</tr>
+</tbody></table>
+
 <h3 id="data-types">Data Types</h3>
 
 <table><thead>
@@ -132,6 +158,10 @@ You must replace `YOUR-ACCESS-TOKEN` with your API key.
 <th>Description</th>
 </tr>
 </thead><tbody>
+<tr>
+<td>status</td>
+<td>Contains either AVAILABLE, ACTIVE, SUPPRESSED or BLOCKED status</td>
+</tr>
 <tr>
 <td>listing_id</td>
 <td>Your unique identifier for the listing, used for adding or deleting a record</td>
@@ -209,10 +239,6 @@ You must replace `YOUR-ACCESS-TOKEN` with your API key.
 <td>The Instgram ID or the username for the business listing</td>
 </tr>
 <tr>
-<td>status</td>
-<td>Statuses of SUPPRESSED, CLAIMED or AVAILABLE can be given for listing</td>
-</tr>
-<tr>
 <td>mapped</td>
 <td>True or False on whether or not the partner listing is mapped</td>
 </tr>
@@ -238,15 +264,19 @@ You must replace `YOUR-ACCESS-TOKEN` with your API key.
 
 <p>There are many ways and uses for the API. Here are the major typical workflows:</p>
 
-<h2 id="search-and-add-listings">Search and Add Listings</h2>
+<p>1) <a href="#get-a-search-for-listings-in-json">Search for listings</a> - We recommend when searching using: Name, Address, Latitude, Longitude and Phone number.</p>
 
-<ol>
-<li><a href="#get-a-search-for-listings-in-json">Search for listings</a> - We recommend when searching using:  Name, Address, Latitude, Longitude and Phone number.</li>
-<li><a href="#post-a-new-partner-listing">Post partner listings</a> - Push all your listings into our database with your listing ID and the Mojo_ID of the listing you want to claim ownership for.
-2.A. <a href="#post-suppress-a-listing">Post a suppress listing</a> - If there are <strong>duplicates</strong> or other issues with listings in our database then supress them.
-2.B. <a href="#update-a-partner-listing">Update partner listing</a> - If a listings status is already claimed then updating it with the you listing ID and Mojo_ID will map the listings and if the listing becomes unclaimed by default it will become your listing.</li>
-<li><a href="#get-partner-listings-in-json">Get partner listings</a> - Lastly this will give you all your listings and the status of those listins in our database.</li>
-</ol>
+<p>2) <a href="#get-a-listing">Get a listing detail</a> - Verify the listings status and make sure that it is Available to be claimed.</p>
+
+<p>3) <a href="#post-a-new-partner-listing">Post partner listings</a> - Push all your listings into our database with your listing ID and the Mojo_ID of the listing you want to claim ownership for.</p>
+
+<p>3.A) <a href="#post-suppress-a-listing">Post a suppress listing</a> - If there are duplicates or other issues with listings in our database then supress them.</p>
+
+<p>3.B) <a href="#post-a-new-partner-listing">Add a partner listing</a> - If you have verified there is no match to a search result, Post a partner listing without a Mojo_ID and it will be added.</p>
+
+<p>3.C) <a href="#update-a-partner-listing">Update partner listing</a> - If you have claimed a listing and the status is active then you can update it at anytime and any parameters passed will be updated.</p>
+
+<p>4) <a href="#get-partner-listings-in-json">Get partner listings</a> - Lastly this will give you all your listings and the status of those listins in our database.</p>
 
           <h1 id="api-v1">API V1</h1>
 
@@ -269,7 +299,8 @@ You must replace `YOUR-ACCESS-TOKEN` with your API key.
   </span><span class="s2">"api_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"published"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"partner"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Company Name"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"total_listings"</span><span class="p">:</span><span class="w"> </span><span class="mi">12000</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"mapped_listings"</span><span class="p">:</span><span class="w"> </span><span class="mi">600</span><span class="w">
+  </span><span class="s2">"mapped_listings"</span><span class="p">:</span><span class="w"> </span><span class="mi">600</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"claimed_listings"</span><span class="p">:</span><span class="w"> </span><span class="mi">600</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
@@ -319,6 +350,10 @@ You must replace `YOUR-ACCESS-TOKEN` with your API key.
 <td>mapped_listings</td>
 <td>Total number of your listings that we&rsquo;ve mapped to ours</td>
 </tr>
+<tr>
+<td>claimed_listings</td>
+<td>Total number of our listings that you have claimed</td>
+</tr>
 </tbody></table>
 
 <h2 id="get-partner-listings-in-json">Get Partner Listings in JSON</h2>
@@ -339,6 +374,7 @@ You must replace `YOUR-ACCESS-TOKEN` with your API key.
   </span><span class="p">},</span><span class="w">
   </span><span class="s2">"listings"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACTIVE"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"listing_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"f76ae9ceb01cf2904fe2"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"mojo_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"11079728"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"mojo_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.mojopages.com/biz/instant-phones-phoenix-az/11079728"</span><span class="p">,</span><span class="w">
@@ -400,6 +436,30 @@ You must replace `YOUR-ACCESS-TOKEN` with your API key.
 </tr>
 </tbody></table>
 
+<table><thead>
+<tr>
+<th>Status Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>AVAILABLE</td>
+<td>This listing is not currently a claimed listing, it may be successfully claimed by you.</td>
+</tr>
+<tr>
+<td>ACTIVE</td>
+<td>This listing is fully activated and live on MojoPages.com.</td>
+</tr>
+<tr>
+<td>SUPPRESSED</td>
+<td>The listing is suppressed, which means it should not appear in our search results or have a detail page.</td>
+</tr>
+<tr>
+<td>BLOCKED</td>
+<td>The listing has an existing relationship with another partner and may not be controlled by you.</td>
+</tr>
+</tbody></table>
+
 <h2 id="get-partner-listings-in-csv">Get Partner Listings in CSV</h2>
 
 <blockquote>
@@ -412,8 +472,8 @@ You must replace `YOUR-ACCESS-TOKEN` with your API key.
 <blockquote>
 <p>The above command returns CSV structured like this:</p>
 </blockquote>
-<pre><code class="highlight plaintext">listing_id, mojo_id, mojo_url, name, address, locality, region, postcode, tel, website, longitude, latitude, facebook_id, twitter_id, google_plus_id, instagram_id, mapped, claimed, omit_address, updated_at
-f76ae9ceb01cf2904fe2, 11079728, https://www.mojopages.com/biz/instant-phones-phoenix-az/11079728, Instant Phones, 2415 E Thomas Rd, Pheonix, AZ, 85016, (602) 224-9582, http://www.mycricket.com/, -112.10158,33.643668, 111664078919577, cricketnation, , cricketnation, false, false, false, 2014-11-27T11:35:27.364Z
+<pre><code class="highlight plaintext">status, listing_id, mojo_id, mojo_url, name, address, locality, region, postcode, tel, website, longitude, latitude, facebook_id, twitter_id, google_plus_id, instagram_id, mapped, claimed, omit_address, updated_at
+ACTIVE, f76ae9ceb01cf2904fe2, 11079728, https://www.mojopages.com/biz/instant-phones-phoenix-az/11079728, Instant Phones, 2415 E Thomas Rd, Pheonix, AZ, 85016, (602) 224-9582, http://www.mycricket.com/, -112.10158,33.643668, 111664078919577, cricketnation, , cricketnation, false, false, false, 2014-11-27T11:35:27.364Z
 </code></pre>
 
 <p>This endpoint retrieves all your existing business listings.</p>
@@ -438,6 +498,30 @@ f76ae9ceb01cf2904fe2, 11079728, https://www.mojopages.com/biz/instant-phones-pho
 </tr>
 </tbody></table>
 
+<table><thead>
+<tr>
+<th>Status Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>AVAILABLE</td>
+<td>This listing is not currently a claimed listing, it may be successfully claimed by you.</td>
+</tr>
+<tr>
+<td>ACTIVE</td>
+<td>This listing is fully activated and live on MojoPages.com.</td>
+</tr>
+<tr>
+<td>SUPPRESSED</td>
+<td>The listing is suppressed, which means it should not appear in our search results or have a detail page.</td>
+</tr>
+<tr>
+<td>BLOCKED</td>
+<td>The listing has an existing relationship with another partner and may not be controlled by you.</td>
+</tr>
+</tbody></table>
+
 <h2 id="get-a-partner-listing">Get a Partner Listing</h2>
 
 <blockquote>
@@ -455,6 +539,7 @@ f76ae9ceb01cf2904fe2, 11079728, https://www.mojopages.com/biz/instant-phones-pho
     </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="s2">"listing"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACTIVE"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"listing_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"f76ae9ceb01cf2904fe2"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"mojo_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"11079728"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"mojo_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.mojopages.com/biz/instant-phones-phoenix-az/11079728"</span><span class="p">,</span><span class="w">
@@ -523,6 +608,32 @@ f76ae9ceb01cf2904fe2, 11079728, https://www.mojopages.com/biz/instant-phones-pho
 You must replace `:LISTING_ID` with your business listing id.
 </aside>
 
+<h3 id="status-types">Status Types</h3>
+
+<table><thead>
+<tr>
+<th>Status Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>AVAILABLE</td>
+<td>This listing is not currently a claimed listing, it may be successfully claimed by you.</td>
+</tr>
+<tr>
+<td>ACTIVE</td>
+<td>This listing is fully activated and live on MojoPages.com.</td>
+</tr>
+<tr>
+<td>SUPPRESSED</td>
+<td>The listing is suppressed, which means it should not appear in our search results or have a detail page.</td>
+</tr>
+<tr>
+<td>BLOCKED</td>
+<td>The listing has an existing relationship with another partner and may not be controlled by you.</td>
+</tr>
+</tbody></table>
+
 <h2 id="post-a-new-partner-listing">Post a New Partner Listing</h2>
 
 <blockquote>
@@ -536,46 +647,53 @@ You must replace `:LISTING_ID` with your business listing id.
 </code></pre>
 
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above command returns JSON structured like this if it gets claimed:</p>
 </blockquote>
 <pre><code class="highlight json"><span class="p">{</span><span class="w">
   </span><span class="s2">"response"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="s2">"listing"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LIVE"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"listing_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7d373c1da40cbfc3f165"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"mojo_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"201702"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"mojo_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.mojopages.com/biz/piety-hill-cottages-phoenix-az/201702"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Piety Hill Cottages"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"523 Sacramento St"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"locality"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Nevada City"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"region"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CA"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"postcode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"95959"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"tel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"(555) 555-5555"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"website"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"facebook_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"twitter_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"google_plus_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"instagram_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"mapped"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"claimed"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"omit_address"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"hours"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"sunday"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="p">[</span><span class="w">
-          </span><span class="s2">"closed"</span><span class="w">
-        </span><span class="p">]</span><span class="w">
-        </span><span class="p">],</span><span class="w">
-      </span><span class="s2">"monday"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="p">[</span><span class="w">
-          </span><span class="s2">"8:00"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"16:00"</span><span class="w">
-        </span><span class="p">]</span><span class="w">
+    </span><span class="s2">"mojo_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.mojopages.com/biz/piety-hill-cottages-phoenix-az/201702"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this if it&rsquo;s already claimed:</p>
+</blockquote>
+<pre><code class="highlight json"><span class="p">{</span><span class="w">
+  </span><span class="s2">"response"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">422</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"listing"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BLOCKED"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"listing_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7d373c1da40cbfc3f165"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"mojo_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"201702"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"mojo_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.mojopages.com/biz/piety-hill-cottages-phoenix-az/201702"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this if it&rsquo;s validations are rejected:</p>
+</blockquote>
+<pre><code class="highlight json"><span class="p">{</span><span class="w">
+  </span><span class="s2">"response"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">422</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"listing"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"REJECTED"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"error"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"messages"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Validation failed: Postcode can't be blank"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
       </span><span class="p">]</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2014-11-27T11:35:27.364Z"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
@@ -610,6 +728,28 @@ You must replace `:LISTING_ID` with your business listing id.
 <aside class="notice">
 You must replace `:LISTING_ID` with your business listings id.
 </aside>
+
+<h3 id="status-types">Status Types</h3>
+
+<table><thead>
+<tr>
+<th>Status Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>LIVE</td>
+<td>The Listing added or mapped is fully activated and live on MojoPages.com.</td>
+</tr>
+<tr>
+<td>REJECTED</td>
+<td>The Listing did not pass our validation and description of the issue will be stated.</td>
+</tr>
+<tr>
+<td>BLOCKED</td>
+<td>You cannot create the Listing and description of the issue will be stated.</td>
+</tr>
+</tbody></table>
 
 <h3 id="available-json-listing-values">Available JSON Listing Values</h3>
 
@@ -735,46 +875,53 @@ You must replace `:LISTING_ID` with your business listings id.
 </code></pre>
 
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above command returns JSON structured like this if it gets claimed:</p>
 </blockquote>
 <pre><code class="highlight json"><span class="p">{</span><span class="w">
   </span><span class="s2">"response"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="s2">"listing"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LIVE"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"listing_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7d373c1da40cbfc3f165"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"mojo_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"201702"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"mojo_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.mojopages.com/biz/piety-hill-cottages-phoenix-az/201702"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Piety Hill Cottages"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"523 Sacramento St"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"locality"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Nevada City"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"region"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CA"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"postcode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"95959"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"tel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"(555) 555-5555"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"website"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"facebook_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"twitter_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"google_plus_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"instagram_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"mapped"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"claimed"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"omit_address"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"hours"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"sunday"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="p">[</span><span class="w">
-          </span><span class="s2">"closed"</span><span class="w">
-        </span><span class="p">]</span><span class="w">
-        </span><span class="p">],</span><span class="w">
-      </span><span class="s2">"monday"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="p">[</span><span class="w">
-          </span><span class="s2">"8:00"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"16:00"</span><span class="w">
-        </span><span class="p">]</span><span class="w">
+    </span><span class="s2">"mojo_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.mojopages.com/biz/piety-hill-cottages-phoenix-az/201702"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this if it&rsquo;s already claimed:</p>
+</blockquote>
+<pre><code class="highlight json"><span class="p">{</span><span class="w">
+  </span><span class="s2">"response"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">422</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"listing"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BLOCKED"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"listing_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7d373c1da40cbfc3f165"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"mojo_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"201702"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"mojo_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.mojopages.com/biz/piety-hill-cottages-phoenix-az/201702"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this if it&rsquo;s validations are rejected:</p>
+</blockquote>
+<pre><code class="highlight json"><span class="p">{</span><span class="w">
+  </span><span class="s2">"response"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">422</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"listing"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"REJECTED"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"error"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"messages"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Validation failed: Postcode can't be blank"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
       </span><span class="p">]</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2014-11-27T11:35:27.364Z"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
@@ -809,6 +956,28 @@ You must replace `:LISTING_ID` with your business listings id.
 <aside class="notice">
 You must replace `:LISTING_ID` with your business listings id.
 </aside>
+
+<h3 id="status-types">Status Types</h3>
+
+<table><thead>
+<tr>
+<th>Status Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>LIVE</td>
+<td>The Listing added or mapped is fully activated and live on MojoPages.com.</td>
+</tr>
+<tr>
+<td>REJECTED</td>
+<td>The Listing did not pass our validation and description of the issue will be stated.</td>
+</tr>
+<tr>
+<td>BLOCKED</td>
+<td>You cannot create the Listing and description of the issue will be stated.</td>
+</tr>
+</tbody></table>
 
 <h3 id="available-json-listing-values">Available JSON Listing Values</h3>
 
@@ -1080,6 +1249,7 @@ You must replace `:LISTING_ID` with your business listings id.
   </span><span class="p">},</span><span class="w">
   </span><span class="s2">"listings"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AVAILABLE"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"mojo_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"11079728"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"mojo_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.mojopages.com/biz/instant-phones-phoenix-az/11079728"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Instant Phones"</span><span class="p">,</span><span class="w">
@@ -1189,6 +1359,30 @@ You must replace `:LISTING_ID` with your business listings id.
 </tr>
 </tbody></table>
 
+<table><thead>
+<tr>
+<th>Status Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>AVAILABLE</td>
+<td>This listing is not currently a claimed listing, it may be successfully claimed by you.</td>
+</tr>
+<tr>
+<td>ACTIVE</td>
+<td>This listing is fully activated and live on MojoPages.com.</td>
+</tr>
+<tr>
+<td>SUPPRESSED</td>
+<td>The listing is suppressed, which means it should not appear in our search results or have a detail page.</td>
+</tr>
+<tr>
+<td>BLOCKED</td>
+<td>The listing has an existing relationship with another partner and may not be controlled by you.</td>
+</tr>
+</tbody></table>
+
 <h2 id="get-a-listing">Get a Listing</h2>
 
 <blockquote>
@@ -1206,6 +1400,7 @@ You must replace `:LISTING_ID` with your business listings id.
     </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="s2">"listing"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AVAILABLE"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"mojo_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"11079728"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"mojo_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.mojopages.com/biz/instant-phones-phoenix-az/11079728"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Instant Phones"</span><span class="p">,</span><span class="w">
@@ -1271,6 +1466,30 @@ You must replace `:LISTING_ID` with your business listings id.
 <aside class="notice">
 You must replace `:MOJO_ID` with your business listing id.
 </aside>
+
+<table><thead>
+<tr>
+<th>Status Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>AVAILABLE</td>
+<td>This listing is not currently a claimed listing, it may be successfully claimed by you.</td>
+</tr>
+<tr>
+<td>ACTIVE</td>
+<td>This listing is fully activated and live on MojoPages.com.</td>
+</tr>
+<tr>
+<td>SUPPRESSED</td>
+<td>The listing is suppressed, which means it should not appear in our search results or have a detail page.</td>
+</tr>
+<tr>
+<td>BLOCKED</td>
+<td>The listing has an existing relationship with another partner and may not be controlled by you.</td>
+</tr>
+</tbody></table>
 
 <h2 id="get-a-listing-by-factual-id">Get a Listing by Factual ID</h2>
 
@@ -1463,6 +1682,10 @@ You must replace `:MOJO_ID` with your non duplicate business Mojo id.
 <th>Changes</th>
 </tr>
 </thead><tbody>
+<tr>
+<td>4/7/2015</td>
+<td>Updated listing status to better reflect industry standards</td>
+</tr>
 <tr>
 <td>4/6/2015</td>
 <td>Removed Claim/Unclaim Endpoints and integrated Claim into Post/Update Partner Listing</td>
