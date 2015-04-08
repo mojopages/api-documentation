@@ -101,15 +101,13 @@ You must replace `YOUR-ACCESS-TOKEN` with your API key.
   </span><span class="s2">"twitter_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cricketnation"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"google_plus_id"</span><span class="p">:</span><span class="w"> </span><span class="err">NULL</span><span class="p">,</span><span class="w">
   </span><span class="s2">"instagram_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cricketnation"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"mapped"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"claimed"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
   </span><span class="s2">"omit_address"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
   </span><span class="s2">"hours"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"sunday"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"sunday"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="p">[</span><span class="w">
           </span><span class="s2">"closed"</span><span class="w">
         </span><span class="p">]</span><span class="w">
-        </span><span class="p">],</span><span class="w">
+      </span><span class="p">],</span><span class="w">
       </span><span class="s2">"monday"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="p">[</span><span class="w">
           </span><span class="s2">"8:00"</span><span class="p">,</span><span class="w">
@@ -117,6 +115,9 @@ You must replace `YOUR-ACCESS-TOKEN` with your API key.
         </span><span class="p">]</span><span class="w">
       </span><span class="p">]</span><span class="w">
     </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"category_ids"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"467"</span><span class="w">
+    </span><span class="p">],</span><span class="w">
   </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2014-11-27T11:35:27.364Z"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
@@ -239,20 +240,16 @@ You must replace `YOUR-ACCESS-TOKEN` with your API key.
 <td>The Instgram ID or the username for the business listing</td>
 </tr>
 <tr>
-<td>mapped</td>
-<td>True or False on whether or not the partner listing is mapped</td>
-</tr>
-<tr>
-<td>claimed</td>
-<td>True or False on whether or not the partner has claimed a listing</td>
-</tr>
-<tr>
 <td>omit_address</td>
 <td>Boolean for omitting the address from the listing (default: false)</td>
 </tr>
 <tr>
 <td>hours</td>
 <td>The Hours a business is open or closed represented by a hash of multi dimensional arrays</td>
+</tr>
+<tr>
+<td>category_ids</td>
+<td>MojoPages Category ID&rsquo;s that you want business to be listed under array (max: 3)</td>
 </tr>
 <tr>
 <td>updated_at</td>
@@ -264,19 +261,21 @@ You must replace `YOUR-ACCESS-TOKEN` with your API key.
 
 <p>There are many ways and uses for the API. Here are the major typical workflows:</p>
 
-<p>1) <a href="#get-a-search-for-listings-in-json">Search for listings</a> - We recommend when searching using: Name, Address, Latitude, Longitude and Phone number.</p>
+<p>1) <a href="#get-categories-in-json">Find Right Category ID</a> - You&rsquo;ll first want to grab a list of our category ID&rsquo;s before getting started.</p>
 
-<p>2) <a href="#get-a-listing">Get a listing detail</a> - Verify the listings status and make sure that it is Available to be claimed.</p>
+<p>2) <a href="#get-a-search-for-listings-in-json">Search for listings</a> - We recommend when searching using: Name, Address, Latitude, Longitude and Phone number.</p>
 
-<p>3) <a href="#post-a-new-partner-listing">Post partner listings</a> - Push all your listings into our database with your listing ID and the Mojo_ID of the listing you want to claim ownership for.</p>
+<p>3) <a href="#get-a-listing">Get a listing detail</a> - Verify the listings status and make sure that it is Available to be claimed.</p>
 
-<p>3.A) <a href="#post-suppress-a-listing">Post a suppress listing</a> - If there are duplicates or other issues with listings in our database then supress them.</p>
+<p>4) <a href="#post-a-new-partner-listing">Post partner listings</a> - Push all your listings into our database with your listing ID and the Mojo_ID of the listing you want to claim ownership for.</p>
 
-<p>3.B) <a href="#post-a-new-partner-listing">Add a partner listing</a> - If you have verified there is no match to a search result, Post a partner listing without a Mojo_ID and it will be added.</p>
+<p>4.A) <a href="#post-suppress-a-listing">Post a suppress listing</a> - If there are duplicates or other issues with listings in our database then supress them.</p>
 
-<p>3.C) <a href="#update-a-partner-listing">Update partner listing</a> - If you have claimed a listing and the status is active then you can update it at anytime and any parameters passed will be updated.</p>
+<p>4.B) <a href="#post-a-new-partner-listing">Add a partner listing</a> - If you have verified there is no match to a search result, Post a partner listing without a Mojo_ID and it will be added.</p>
 
-<p>4) <a href="#get-partner-listings-in-json">Get partner listings</a> - Lastly this will give you all your listings and the status of those listins in our database.</p>
+<p>4.C) <a href="#update-a-partner-listing">Update partner listing</a> - If you have claimed a listing and the status is active then you can update it at anytime and any parameters passed will be updated.</p>
+
+<p>5) <a href="#get-partner-listings-in-json">Get partner listings</a> - Lastly this will give you all your listings and the status of those listins in our database.</p>
 
           <h1 id="api-v1">API V1</h1>
 
@@ -391,22 +390,23 @@ You must replace `YOUR-ACCESS-TOKEN` with your API key.
       </span><span class="s2">"twitter_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cricketnation"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"google_plus_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
       </span><span class="s2">"instagram_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cricketnation"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"mapped"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"claimed"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
       </span><span class="s2">"omit_address"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
       </span><span class="s2">"hours"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"sunday"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-          </span><span class="p">[</span><span class="w">
-            </span><span class="s2">"closed"</span><span class="w">
-          </span><span class="p">]</span><span class="w">
+          </span><span class="s2">"sunday"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">[</span><span class="w">
+              </span><span class="s2">"closed"</span><span class="w">
+            </span><span class="p">]</span><span class="w">
           </span><span class="p">],</span><span class="w">
-        </span><span class="s2">"monday"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-          </span><span class="p">[</span><span class="w">
-            </span><span class="s2">"8:00"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"16:00"</span><span class="w">
+          </span><span class="s2">"monday"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">[</span><span class="w">
+              </span><span class="s2">"8:00"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"16:00"</span><span class="w">
+            </span><span class="p">]</span><span class="w">
           </span><span class="p">]</span><span class="w">
-        </span><span class="p">]</span><span class="w">
-      </span><span class="p">},</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"category_ids"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="s2">"467"</span><span class="w">
+        </span><span class="p">],</span><span class="w">
       </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2014-11-27T11:35:27.364Z"</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
@@ -556,22 +556,23 @@ ACTIVE, f76ae9ceb01cf2904fe2, 11079728, https://www.mojopages.com/biz/instant-ph
     </span><span class="s2">"twitter_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cricketnation"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"google_plus_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="s2">"instagram_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cricketnation"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"mapped"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"claimed"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
     </span><span class="s2">"omit_address"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
     </span><span class="s2">"hours"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"sunday"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="p">[</span><span class="w">
-          </span><span class="s2">"closed"</span><span class="w">
-        </span><span class="p">]</span><span class="w">
+        </span><span class="s2">"sunday"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"closed"</span><span class="w">
+          </span><span class="p">]</span><span class="w">
         </span><span class="p">],</span><span class="w">
-      </span><span class="s2">"monday"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="p">[</span><span class="w">
-          </span><span class="s2">"8:00"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"16:00"</span><span class="w">
+        </span><span class="s2">"monday"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"8:00"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"16:00"</span><span class="w">
+          </span><span class="p">]</span><span class="w">
         </span><span class="p">]</span><span class="w">
-      </span><span class="p">]</span><span class="w">
-    </span><span class="p">},</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"category_ids"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"467"</span><span class="w">
+      </span><span class="p">],</span><span class="w">
     </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2014-11-27T11:35:27.364Z"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -642,7 +643,7 @@ You must replace `:LISTING_ID` with your business listing id.
 <pre><code class="highlight shell">curl <span class="s2">"https://api.mojopages.com/api/v1/partner/listing/7d373c1da40cbfc3f165"</span>
   -H <span class="s2">"Authorization: Token token=YOUR-ACCESS-TOKEN"</span>
   -H <span class="s2">"Content-Type: application/json"</span>
-  -X POST -d <span class="s1">'{"mojo_id": 201702, "name": "Piety Hill Cottages", "address": "523 Sacramento St", "tel": "(555) 555-5555", "locality": "Nevada City", "region": "CA", "postcode":"95959", "hours": {"sunday":[["closed"]], "monday": [["8:00","16:00"]]}}'</span>
+  -X POST -d <span class="s1">'{"mojo_id": 201702, "name": "Piety Hill Cottages", "address": "523 Sacramento St", "tel": "(555) 555-5555", "locality": "Nevada City", "region": "CA", "postcode":"95959", "latitude": "47.288845", "longitude": "-101.0308", "hours": {"sunday":[["closed"]], "monday": [["8:00","16:00"]]}, "category_ids": [467]}'</span>
 
 </code></pre>
 
@@ -822,12 +823,12 @@ You must replace `:LISTING_ID` with your business listings id.
 </tr>
 <tr>
 <td>longitude</td>
-<td>false</td>
+<td>true</td>
 <td>Longitude of the business location</td>
 </tr>
 <tr>
 <td>latitude</td>
-<td>false</td>
+<td>true</td>
 <td>Latitude of the business location</td>
 </tr>
 <tr>
@@ -859,6 +860,11 @@ You must replace `:LISTING_ID` with your business listings id.
 <td>hours</td>
 <td>false</td>
 <td>The Hours a business is open or closed represented by a hash of multi dimensional arrays</td>
+</tr>
+<tr>
+<td>category_ids</td>
+<td>true</td>
+<td>MojoPages Category ID&rsquo;s that you want business to be listed under array (max: 3)</td>
 </tr>
 </tbody></table>
 
@@ -902,26 +908,6 @@ You must replace `:LISTING_ID` with your business listings id.
     </span><span class="s2">"listing_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7d373c1da40cbfc3f165"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"mojo_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"201702"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"mojo_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.mojopages.com/biz/piety-hill-cottages-phoenix-az/201702"</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-
-<blockquote>
-<p>The above command returns JSON structured like this if it&rsquo;s validations are rejected:</p>
-</blockquote>
-<pre><code class="highlight json"><span class="p">{</span><span class="w">
-  </span><span class="s2">"response"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">422</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="s2">"listing"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"REJECTED"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"error"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"messages"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Validation failed: Postcode can't be blank"</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-      </span><span class="p">]</span><span class="w">
-    </span><span class="p">}</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
@@ -984,109 +970,92 @@ You must replace `:LISTING_ID` with your business listings id.
 <table><thead>
 <tr>
 <th>Listing Value</th>
-<th>required</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>listing_id</td>
-<td>true</td>
 <td>Your unique identifier for the listing, used for adding or deleting a record</td>
 </tr>
 <tr>
 <td>mojo_id</td>
-<td>false</td>
 <td>Claims a Business based on mojo_id, will automap or create new listing when not included</td>
 </tr>
 <tr>
 <td>name</td>
-<td>true</td>
 <td>Name of the business</td>
 </tr>
 <tr>
 <td>address</td>
-<td>true</td>
 <td>Address of the business</td>
 </tr>
 <tr>
 <td>address_extended</td>
-<td>false</td>
 <td>Second address of the business if there is one</td>
 </tr>
 <tr>
 <td>locality</td>
-<td>true</td>
 <td>City where the business is located</td>
 </tr>
 <tr>
 <td>region</td>
-<td>true</td>
 <td>State in which the business is located, should be 2 character abreviation</td>
 </tr>
 <tr>
 <td>postcode</td>
-<td>true</td>
 <td>Postal code where the business is located, should be a minimum 5 digits</td>
 </tr>
 <tr>
 <td>tel</td>
-<td>false</td>
 <td>Telephone number of the business, should be 10 digits</td>
 </tr>
 <tr>
 <td>fax</td>
-<td>false</td>
 <td>Fax number of the business, should be 10 digits</td>
 </tr>
 <tr>
 <td>website</td>
-<td>false</td>
 <td>URL for the business, include http://</td>
 </tr>
 <tr>
 <td>email</td>
-<td>false</td>
 <td>Email address for the business</td>
 </tr>
 <tr>
 <td>longitude</td>
-<td>false</td>
 <td>Longitude of the business location</td>
 </tr>
 <tr>
 <td>latitude</td>
-<td>false</td>
 <td>Latitude of the business location</td>
 </tr>
 <tr>
 <td>facebook_id</td>
-<td>false</td>
 <td>The Facebook ID or the name of the page for the business</td>
 </tr>
 <tr>
 <td>twitter_id</td>
-<td>false</td>
 <td>Twitter username for the business, without the @ symbol</td>
 </tr>
 <tr>
 <td>google_plus_id</td>
-<td>false</td>
 <td>The Google Plus ID or the name used for the page of the business</td>
 </tr>
 <tr>
 <td>instagram_id</td>
-<td>false</td>
 <td>The Instgram ID or the username for the business listing</td>
 </tr>
 <tr>
 <td>omit_address</td>
-<td>false</td>
 <td>Boolean for omitting the address from the listing (default: false)</td>
 </tr>
 <tr>
 <td>hours</td>
-<td>false</td>
 <td>The Hours a business is open or closed represented by a hash of multi dimensional arrays</td>
+</tr>
+<tr>
+<td>category_ids</td>
+<td>MojoPages Category ID&rsquo;s that you want business to be listed under array (max: 3)</td>
 </tr>
 </tbody></table>
 
@@ -1261,21 +1230,23 @@ You must replace `:LISTING_ID` with your business listings id.
       </span><span class="s2">"website"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://www.mycricket.com/"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-112.10158"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="s2">"33.643668"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AVAILABLE"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"omit_address"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
       </span><span class="s2">"hours"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"sunday"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-          </span><span class="p">[</span><span class="w">
-            </span><span class="s2">"closed"</span><span class="w">
-          </span><span class="p">]</span><span class="w">
+          </span><span class="s2">"sunday"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">[</span><span class="w">
+              </span><span class="s2">"closed"</span><span class="w">
+            </span><span class="p">]</span><span class="w">
           </span><span class="p">],</span><span class="w">
-        </span><span class="s2">"monday"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-          </span><span class="p">[</span><span class="w">
-            </span><span class="s2">"8:00"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"16:00"</span><span class="w">
+          </span><span class="s2">"monday"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">[</span><span class="w">
+              </span><span class="s2">"8:00"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"16:00"</span><span class="w">
+            </span><span class="p">]</span><span class="w">
           </span><span class="p">]</span><span class="w">
-        </span><span class="p">]</span><span class="w">
-      </span><span class="p">},</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"category_ids"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="s2">"467"</span><span class="w">
+        </span><span class="p">],</span><span class="w">
       </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2014-11-27T11:35:27.364Z"</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
@@ -1419,18 +1390,21 @@ You must replace `:LISTING_ID` with your business listings id.
     </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AVAILABLE"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"omit_address"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
     </span><span class="s2">"hours"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"sunday"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="p">[</span><span class="w">
-          </span><span class="s2">"closed"</span><span class="w">
-        </span><span class="p">]</span><span class="w">
+        </span><span class="s2">"sunday"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"closed"</span><span class="w">
+          </span><span class="p">]</span><span class="w">
         </span><span class="p">],</span><span class="w">
-      </span><span class="s2">"monday"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="p">[</span><span class="w">
-          </span><span class="s2">"8:00"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"16:00"</span><span class="w">
+        </span><span class="s2">"monday"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"8:00"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"16:00"</span><span class="w">
+          </span><span class="p">]</span><span class="w">
         </span><span class="p">]</span><span class="w">
-      </span><span class="p">]</span><span class="w">
-    </span><span class="p">},</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"category_ids"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"467"</span><span class="w">
+      </span><span class="p">],</span><span class="w">
     </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2014-11-27T11:35:27.364Z"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -1682,6 +1656,10 @@ You must replace `:MOJO_ID` with your non duplicate business Mojo id.
 <th>Changes</th>
 </tr>
 </thead><tbody>
+<tr>
+<td>4/8/2015</td>
+<td>Added Category ID&rsquo;s and LatLong Validations</td>
+</tr>
 <tr>
 <td>4/7/2015</td>
 <td>Updated listing status to better reflect industry standards</td>
