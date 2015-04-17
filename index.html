@@ -118,6 +118,11 @@ You must replace `YOUR-ACCESS-TOKEN` with your API key.
   </span><span class="s2">"category_ids"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="s2">"467"</span><span class="w">
     </span><span class="p">],</span><span class="w">
+  </span><span class="s2">"logo_url"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"photo_urls"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+  </span><span class="s2">"video_urls"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+  </span><span class="s2">"offer_message"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"offer_url"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
   </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2014-11-27T11:35:27.364Z"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
@@ -250,6 +255,26 @@ You must replace `YOUR-ACCESS-TOKEN` with your API key.
 <tr>
 <td>category_ids</td>
 <td>MojoPages Category ID&rsquo;s that you want business to be listed under array (max: 3)</td>
+</tr>
+<tr>
+<td>logo_url</td>
+<td>URL for the listing logo, must be a minimum of 150x150 pixels</td>
+</tr>
+<tr>
+<td>photo_urls</td>
+<td>Array of URLs for the listing photos, must all be a minimum of 150x150 pixels</td>
+</tr>
+<tr>
+<td>video_urls</td>
+<td>Array of URLs for the listing videos, must be either YouTube or Vimeo links</td>
+</tr>
+<tr>
+<td>offer_message</td>
+<td>Special Offer or Coupon Message used as a link on the listing page</td>
+</tr>
+<tr>
+<td>offer_url</td>
+<td>Special Offer or Coupon URL used as a link on the listing page</td>
 </tr>
 <tr>
 <td>updated_at</td>
@@ -407,6 +432,11 @@ You must replace `YOUR-ACCESS-TOKEN` with your API key.
       </span><span class="s2">"category_ids"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
           </span><span class="s2">"467"</span><span class="w">
         </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"logo_url"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"photo_urls"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+      </span><span class="s2">"video_urls"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+      </span><span class="s2">"offer_message"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"offer_url"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
       </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2014-11-27T11:35:27.364Z"</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
@@ -573,6 +603,11 @@ ACTIVE, f76ae9ceb01cf2904fe2, 11079728, https://www.mojopages.com/biz/instant-ph
     </span><span class="s2">"category_ids"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="s2">"467"</span><span class="w">
       </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"logo_url"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"photo_urls"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+    </span><span class="s2">"video_urls"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+    </span><span class="s2">"offer_message"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"offer_url"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2014-11-27T11:35:27.364Z"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -866,6 +901,31 @@ You must replace `:LISTING_ID` with your business listings id.
 <td>true</td>
 <td>MojoPages Category ID&rsquo;s that you want business to be listed under array (max: 3)</td>
 </tr>
+<tr>
+<td>logo_url</td>
+<td>false</td>
+<td>URL for the listing logo, must be a minimum of 150x150 pixels</td>
+</tr>
+<tr>
+<td>photo_urls</td>
+<td>false</td>
+<td>Array of URLs for the listing photos, must all be a minimum of 150x150 pixels</td>
+</tr>
+<tr>
+<td>video_urls</td>
+<td>false</td>
+<td>Array of URLs for the listing videos, must be either YouTube or Vimeo links</td>
+</tr>
+<tr>
+<td>offer_message</td>
+<td>false</td>
+<td>Special Offer or Coupon Message used as a link on the listing page</td>
+</tr>
+<tr>
+<td>offer_url</td>
+<td>false</td>
+<td>Special Offer or Coupon URL used as a link on the listing page</td>
+</tr>
 </tbody></table>
 
 <h2 id="update-a-partner-listing">Update a Partner Listing</h2>
@@ -1057,6 +1117,26 @@ You must replace `:LISTING_ID` with your business listings id.
 <td>category_ids</td>
 <td>MojoPages Category ID&rsquo;s that you want business to be listed under array (max: 3)</td>
 </tr>
+<tr>
+<td>logo_url</td>
+<td>URL for the listing logo, must be a minimum of 150x150 pixels</td>
+</tr>
+<tr>
+<td>photo_urls</td>
+<td>Array of URLs for the listing photos, must all be a minimum of 150x150 pixels</td>
+</tr>
+<tr>
+<td>video_urls</td>
+<td>Array of URLs for the listing videos, must be either YouTube or Vimeo links</td>
+</tr>
+<tr>
+<td>offer_message</td>
+<td>Special Offer or Coupon Message used as a link on the listing page</td>
+</tr>
+<tr>
+<td>offer_url</td>
+<td>Special Offer or Coupon URL used as a link on the listing page</td>
+</tr>
 </tbody></table>
 
 <h2 id="delete-a-partner-listing">Delete a Partner Listing</h2>
@@ -1247,6 +1327,11 @@ You must replace `:LISTING_ID` with your business listings id.
       </span><span class="s2">"category_ids"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
           </span><span class="s2">"467"</span><span class="w">
         </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"logo_url"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"photo_urls"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+      </span><span class="s2">"video_urls"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+      </span><span class="s2">"offer_message"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"offer_url"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
       </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2014-11-27T11:35:27.364Z"</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
@@ -1405,6 +1490,11 @@ You must replace `:LISTING_ID` with your business listings id.
     </span><span class="s2">"category_ids"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="s2">"467"</span><span class="w">
       </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"logo_url"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"photo_urls"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+    </span><span class="s2">"video_urls"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+    </span><span class="s2">"offer_message"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"offer_url"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2014-11-27T11:35:27.364Z"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -1658,6 +1748,10 @@ You must replace `:MOJO_ID` with your non duplicate business Mojo id.
 </thead><tbody>
 <tr>
 <td>4/17/2015</td>
+<td>Added logo_url, photo_urls, video_urls, offer_message and offer_url to listings</td>
+</tr>
+<tr>
+<td>4/16/2015</td>
 <td>Corrected Post and Update from listing object to listing_status</td>
 </tr>
 <tr>
