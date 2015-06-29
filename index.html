@@ -104,11 +104,6 @@ You must replace `YOUR-ACCESS-TOKEN` with your API key.
   </span><span class="s2">"instagram_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cricketnation"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"omit_address"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
   </span><span class="s2">"hours"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"sunday"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="p">[</span><span class="w">
-          </span><span class="s2">"closed"</span><span class="w">
-        </span><span class="p">]</span><span class="w">
-      </span><span class="p">],</span><span class="w">
       </span><span class="s2">"monday"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="p">[</span><span class="w">
           </span><span class="s2">"8:00"</span><span class="p">,</span><span class="w">
@@ -262,7 +257,7 @@ You must replace `YOUR-ACCESS-TOKEN` with your API key.
 </tr>
 <tr>
 <td>hours</td>
-<td>The Hours a business is open or closed represented by a hash of multi dimensional arrays</td>
+<td>The Hours a business is open or closed represented by a hash of multi dimensional arrays or do not include days where business is completely closed.</td>
 </tr>
 <tr>
 <td>category_ids</td>
@@ -438,11 +433,6 @@ You must replace `YOUR-ACCESS-TOKEN` with your API key.
       </span><span class="s2">"instagram_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cricketnation"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"omit_address"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
       </span><span class="s2">"hours"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="s2">"sunday"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-            </span><span class="p">[</span><span class="w">
-              </span><span class="s2">"closed"</span><span class="w">
-            </span><span class="p">]</span><span class="w">
-          </span><span class="p">],</span><span class="w">
           </span><span class="s2">"monday"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
             </span><span class="p">[</span><span class="w">
               </span><span class="s2">"8:00"</span><span class="p">,</span><span class="w">
@@ -617,11 +607,6 @@ ACTIVE, f76ae9ceb01cf2904fe2, 11079728, https://www.mojopages.com/biz/instant-ph
     </span><span class="s2">"instagram_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cricketnation"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"omit_address"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
     </span><span class="s2">"hours"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"sunday"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-          </span><span class="p">[</span><span class="w">
-            </span><span class="s2">"closed"</span><span class="w">
-          </span><span class="p">]</span><span class="w">
-        </span><span class="p">],</span><span class="w">
         </span><span class="s2">"monday"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
           </span><span class="p">[</span><span class="w">
             </span><span class="s2">"8:00"</span><span class="p">,</span><span class="w">
@@ -944,7 +929,7 @@ You must replace `:LISTING_ID` with your business listings id.
 <tr>
 <td>hours</td>
 <td>false</td>
-<td>The Hours a business is open or closed represented by a hash of multi dimensional arrays</td>
+<td>The Hours a business is open or closed represented by a hash of multi dimensional arrays or do not include days where business is completely closed.</td>
 </tr>
 <tr>
 <td>category_ids</td>
@@ -1179,7 +1164,7 @@ You must replace `:LISTING_ID` with your business listings id.
 </tr>
 <tr>
 <td>hours</td>
-<td>The Hours a business is open or closed represented by a hash of multi dimensional arrays</td>
+<td>The Hours a business is open or closed represented by a hash of multi dimensional arrays or do not include days where business is completely closed.</td>
 </tr>
 <tr>
 <td>category_ids</td>
@@ -1389,11 +1374,6 @@ You must replace `:LISTING_ID` with your business listings id.
       </span><span class="s2">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="s2">"33.643668"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"omit_address"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
       </span><span class="s2">"hours"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="s2">"sunday"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-            </span><span class="p">[</span><span class="w">
-              </span><span class="s2">"closed"</span><span class="w">
-            </span><span class="p">]</span><span class="w">
-          </span><span class="p">],</span><span class="w">
           </span><span class="s2">"monday"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
             </span><span class="p">[</span><span class="w">
               </span><span class="s2">"8:00"</span><span class="p">,</span><span class="w">
@@ -1560,11 +1540,6 @@ You must replace `:LISTING_ID` with your business listings id.
     </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AVAILABLE"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"omit_address"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
     </span><span class="s2">"hours"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"sunday"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-          </span><span class="p">[</span><span class="w">
-            </span><span class="s2">"closed"</span><span class="w">
-          </span><span class="p">]</span><span class="w">
-        </span><span class="p">],</span><span class="w">
         </span><span class="s2">"monday"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
           </span><span class="p">[</span><span class="w">
             </span><span class="s2">"8:00"</span><span class="p">,</span><span class="w">
@@ -1838,6 +1813,10 @@ You must replace `:MOJO_ID` with your non duplicate business Mojo id.
 <th>Changes</th>
 </tr>
 </thead><tbody>
+<tr>
+<td>6/29/2015</td>
+<td>Changed how we handle closed hours, day must now be left out of hours hash</td>
+</tr>
 <tr>
 <td>5/8/2015</td>
 <td>Added Description and changed listing_status in POST and PUT partner listings</td>
