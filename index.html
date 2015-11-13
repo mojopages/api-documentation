@@ -448,6 +448,7 @@ You must replace `YOUR-ACCESS-TOKEN` with your API key.
       </span><span class="s2">"video_urls"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
       </span><span class="s2">"offer_message"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
       </span><span class="s2">"offer_url"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"menu_url"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
       </span><span class="s2">"attribution_logo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
           </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Company"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://www.company.com/attribution/logo.png"</span><span class="p">,</span><span class="w">
@@ -622,6 +623,7 @@ ACTIVE, f76ae9ceb01cf2904fe2, 11079728, https://www.mojopages.com/biz/instant-ph
     </span><span class="s2">"video_urls"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
     </span><span class="s2">"offer_message"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="s2">"offer_url"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"menu_url"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="s2">"attribution_logo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Company"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://www.company.com/attribution/logo.png"</span><span class="p">,</span><span class="w">
@@ -962,6 +964,11 @@ You must replace `:LISTING_ID` with your business listings id.
 <td>Special Offer or Coupon URL used as a link on the listing page</td>
 </tr>
 <tr>
+<td>menu_url</td>
+<td>false</td>
+<td>Menu URL used as a link on the listing page</td>
+</tr>
+<tr>
 <td>attribution_logo</td>
 <td>false</td>
 <td>Partner attribution logo hash with description, width, height and a url that also supports https</td>
@@ -1191,6 +1198,10 @@ You must replace `:LISTING_ID` with your business listings id.
 <td>Special Offer or Coupon URL used as a link on the listing page</td>
 </tr>
 <tr>
+<td>menu_url</td>
+<td>false</td>
+</tr>
+<tr>
 <td>attribution_logo</td>
 <td>Partner attribution logo hash with description, width, height and a url that also supports https</td>
 </tr>
@@ -1389,6 +1400,7 @@ You must replace `:LISTING_ID` with your business listings id.
       </span><span class="s2">"video_urls"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
       </span><span class="s2">"offer_message"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
       </span><span class="s2">"offer_url"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"menu_url"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
       </span><span class="s2">"attribution_logo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
           </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Company"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://www.company.com/attribution/logo.png"</span><span class="p">,</span><span class="w">
@@ -1555,15 +1567,16 @@ You must replace `:LISTING_ID` with your business listings id.
     </span><span class="s2">"video_urls"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
     </span><span class="s2">"offer_message"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="s2">"offer_url"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"attribution_logo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Company"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://www.company.com/attribution/logo.png"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"width"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"height"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-      </span><span class="s2">"attribution_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://www.company.com"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2014-11-27T11:35:27.364Z"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
+    </span><span class="s2">"menu_url"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"attribution_logo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Company"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://www.company.com/attribution/logo.png"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"width"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"height"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"attribution_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://www.company.com"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2014-11-27T11:35:27.364Z"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
@@ -1813,6 +1826,10 @@ You must replace `:MOJO_ID` with your non duplicate business Mojo id.
 <th>Changes</th>
 </tr>
 </thead><tbody>
+<tr>
+<td>11/13/2015</td>
+<td>Added Menu Url to partner listings</td>
+</tr>
 <tr>
 <td>6/29/2015</td>
 <td>Changed how we handle closed hours, day must now be left out of hours hash</td>
