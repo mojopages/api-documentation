@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>MojoPages API Documentation</title>
+    <title>LocalStack API Documentation</title>
 
     <link href="stylesheets/screen.css" rel="stylesheet" type="text/css" media="screen" />
     <link href="stylesheets/print.css" rel="stylesheet" type="text/css" media="print" />
@@ -30,9 +30,9 @@
       </div>
         <ul class="toc-footer">
             <li><a href='#'>Get an Access</a></li>
-            <li><a href='http://help.mojopages.com'>Get some help</a></li>
+            <li><a href='http://support.localstack.com'>Get some help</a></li>
             <li><a href='http://github.com/tripit/slate'>Documentation Powered by Slate</a></li>
-            <li><p>&#169; 2014 MojoPages, Inc. San Diego, CA</p></li>
+            <li><p>&#169; 2014 LocalStack, Inc. San Diego, CA</p></li>
         </ul>
     </div>
     <div class="page-wrapper">
@@ -40,15 +40,15 @@
       <div class="content">
         <h1 id="introduction">Introduction</h1>
 
-<p>Welcome to the MojoPages API documentation! MojoPages is a local business search application which uses social media to provide relavant and interesting results. The API is RESTful and enables adding, updating or delete business listing data on <a href="http://mojopages.com">MojoPages.com</a> and it&rsquo;s properties. The API also allows you to check the status and map your business data to our database as well as retrieve all your business listings within our system.</p>
+<p>Welcome to the LocalStack API documentation! LocalStack is a local business search application which uses social media to provide relavant and interesting results. The API is RESTful and enables adding, updating or delete business listing data on <a href="http://LocalStack.com">LocalStack.com</a> and it&rsquo;s properties. The API also allows you to check the status and map your business data to our database as well as retrieve all your business listings within our system.</p>
 
 <p>Sample code is currently available as cURL in the dark area to the right. Requests and responses are all in JSON.</p>
 
-<p>The API base url is: <strong>https://api.mojopages.com/api/v1/</strong></p>
+<p>The API base url is: <strong>https://api.localstack.com/api/v1/</strong></p>
 
 <p>The API is versioned, the current version is 1. This is designated in the url path with /v1</p>
 
-<p>If you have any question please visit <a href="http://help.mojopages.com">our support pages</a>.</p>
+<p>If you have any question please visit <a href="http://support.localstack.com">our support pages</a>.</p>
 
 <h1 id="authentication">Authentication</h1>
 
@@ -56,7 +56,7 @@
 <p>To set authorization, use this code:</p>
 </blockquote>
 <pre><code class="highlight shell"><span class="c"># With shell, you can just pass the correct header with each request</span>
-curl https://api.mojopages.com/api/v1/status
+curl https://api.localstack.com/api/v1/status
   -H <span class="s2">"Authorization: Token token=YOUR-ACCESS-TOKEN"</span>
 </code></pre>
 
@@ -64,9 +64,9 @@ curl https://api.mojopages.com/api/v1/status
 <p>Make sure to replace <code class="prettyprint">YOUR-ACCESS-TOKEN</code> with your API access key.</p>
 </blockquote>
 
-<p>MojoPages uses API keys to allow access to the API. You can get an account by contacting us.</p>
+<p>LocalStack uses API keys to allow access to the API. You can get an account by contacting us.</p>
 
-<p>The MojoPages API expects for the API key to be included in all API requests to the server. The API key can be passed either as a parameter like the following:</p>
+<p>The LocalStack API expects for the API key to be included in all API requests to the server. The API key can be passed either as a parameter like the following:</p>
 
 <p><code class="prettyprint">access_token=YOUR-ACCESS-TOKEN</code></p>
 
@@ -87,7 +87,7 @@ You must replace `YOUR-ACCESS-TOKEN` with your API key.
   </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AVAILABLE"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"listing_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"f76ae9ceb01cf2904fe2"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"mojo_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"11079728"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"mojo_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.mojopages.com/biz/instant-phones-phoenix-az/11079728"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"mojo_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.localstack.com/biz/instant-phones-phoenix-az/11079728"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Instant Phones"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
   </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2415 E Thomas Rd"</span><span class="p">,</span><span class="w">
@@ -147,7 +147,7 @@ You must replace `YOUR-ACCESS-TOKEN` with your API key.
 </tr>
 <tr>
 <td>ACTIVE</td>
-<td>This listing is fully activated and live on MojoPages.com.</td>
+<td>This listing is fully activated and live on LocalStack.com.</td>
 </tr>
 <tr>
 <td>SUPPRESSED</td>
@@ -181,7 +181,7 @@ You must replace `YOUR-ACCESS-TOKEN` with your API key.
 </tr>
 <tr>
 <td>mojo_url</td>
-<td>URL for MojoPages listing</td>
+<td>URL for LocalStack listing</td>
 </tr>
 <tr>
 <td>name</td>
@@ -261,7 +261,7 @@ You must replace `YOUR-ACCESS-TOKEN` with your API key.
 </tr>
 <tr>
 <td>category_ids</td>
-<td>MojoPages Category ID&rsquo;s that you want business to be listed under array (max: 3)</td>
+<td>LocalStack Category ID&rsquo;s that you want business to be listed under array (max: 3)</td>
 </tr>
 <tr>
 <td>logo_url</td>
@@ -324,7 +324,7 @@ You must replace `YOUR-ACCESS-TOKEN` with your API key.
 <blockquote>
 <p>Request example</p>
 </blockquote>
-<pre><code class="highlight shell">curl <span class="s2">"https://api.mojopages.com/api/v1/status"</span>
+<pre><code class="highlight shell">curl <span class="s2">"https://api.localstack.com/api/v1/status"</span>
   -H <span class="s2">"Authorization: Token token=YOUR-ACCESS-TOKEN"</span>
 </code></pre>
 
@@ -347,7 +347,7 @@ You must replace `YOUR-ACCESS-TOKEN` with your API key.
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">GET https://api.mojopages.com/api/v1/status</code></p>
+<p><code class="prettyprint">GET https://api.localstack.com/api/v1/status</code></p>
 
 <h3 id="query-parameters">Query Parameters</h3>
 
@@ -400,7 +400,7 @@ You must replace `YOUR-ACCESS-TOKEN` with your API key.
 <blockquote>
 <p>Request example</p>
 </blockquote>
-<pre><code class="highlight shell">curl <span class="s2">"https://api.mojopages.com/api/v1/partner/listings"</span>
+<pre><code class="highlight shell">curl <span class="s2">"https://api.localstack.com/api/v1/partner/listings"</span>
   -H <span class="s1">'Authorization: Token token=YOUR-ACCESS-TOKEN'</span>
 </code></pre>
 
@@ -416,7 +416,7 @@ You must replace `YOUR-ACCESS-TOKEN` with your API key.
       </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACTIVE"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"listing_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"f76ae9ceb01cf2904fe2"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"mojo_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"11079728"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"mojo_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.mojopages.com/biz/instant-phones-phoenix-az/11079728"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"mojo_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.localstack.com/biz/instant-phones-phoenix-az/11079728"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Instant Phones"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
       </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2415 E Thomas Rd"</span><span class="p">,</span><span class="w">
@@ -467,7 +467,7 @@ You must replace `YOUR-ACCESS-TOKEN` with your API key.
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">GET https://api.mojopages.com/api/v1/partner/listings</code></p>
+<p><code class="prettyprint">GET https://api.localstack.com/api/v1/partner/listings</code></p>
 
 <h3 id="query-parameters">Query Parameters</h3>
 
@@ -497,7 +497,7 @@ You must replace `YOUR-ACCESS-TOKEN` with your API key.
 </tr>
 <tr>
 <td>ACTIVE</td>
-<td>This listing is fully activated and live on MojoPages.com.</td>
+<td>This listing is fully activated and live on LocalStack.com.</td>
 </tr>
 <tr>
 <td>SUPPRESSED</td>
@@ -514,7 +514,7 @@ You must replace `YOUR-ACCESS-TOKEN` with your API key.
 <blockquote>
 <p>Request example</p>
 </blockquote>
-<pre><code class="highlight shell">curl <span class="s2">"https://api.mojopages.com/api/v1/partner/listings/csv"</span>
+<pre><code class="highlight shell">curl <span class="s2">"https://api.localstack.com/api/v1/partner/listings/csv"</span>
   -H <span class="s2">"Authorization: Token token=YOUR-ACCESS-TOKEN"</span> &gt;&gt; Listings.csv
 </code></pre>
 
@@ -522,14 +522,14 @@ You must replace `YOUR-ACCESS-TOKEN` with your API key.
 <p>The above command returns CSV structured like this:</p>
 </blockquote>
 <pre><code class="highlight plaintext">status, listing_id, mojo_id, mojo_url, name, address, locality, region, postcode, tel, website, longitude, latitude, facebook_id, twitter_id, google_plus_id, instagram_id, mapped, claimed, omit_address, updated_at
-ACTIVE, f76ae9ceb01cf2904fe2, 11079728, https://www.mojopages.com/biz/instant-phones-phoenix-az/11079728, Instant Phones, 2415 E Thomas Rd, Pheonix, AZ, 85016, (602) 224-9582, http://www.mycricket.com/, -112.10158,33.643668, 111664078919577, cricketnation, , cricketnation, false, false, false, 2014-11-27T11:35:27.364Z
+ACTIVE, f76ae9ceb01cf2904fe2, 11079728, https://www.localstack.com/biz/instant-phones-phoenix-az/11079728, Instant Phones, 2415 E Thomas Rd, Pheonix, AZ, 85016, (602) 224-9582, http://www.mycricket.com/, -112.10158,33.643668, 111664078919577, cricketnation, , cricketnation, false, false, false, 2014-11-27T11:35:27.364Z
 </code></pre>
 
 <p>This endpoint retrieves all your existing business listings.</p>
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">GET https://api.mojopages.com/api/v1/partner/listings/csv</code></p>
+<p><code class="prettyprint">GET https://api.localstack.com/api/v1/partner/listings/csv</code></p>
 
 <h3 id="query-parameters">Query Parameters</h3>
 
@@ -559,7 +559,7 @@ ACTIVE, f76ae9ceb01cf2904fe2, 11079728, https://www.mojopages.com/biz/instant-ph
 </tr>
 <tr>
 <td>ACTIVE</td>
-<td>This listing is fully activated and live on MojoPages.com.</td>
+<td>This listing is fully activated and live on LocalStack.com.</td>
 </tr>
 <tr>
 <td>SUPPRESSED</td>
@@ -576,7 +576,7 @@ ACTIVE, f76ae9ceb01cf2904fe2, 11079728, https://www.mojopages.com/biz/instant-ph
 <blockquote>
 <p>Request example</p>
 </blockquote>
-<pre><code class="highlight shell">curl <span class="s2">"https://api.mojopages.com/api/v1/partner/listing/7d373c1da40cbfc3f165"</span>
+<pre><code class="highlight shell">curl <span class="s2">"https://api.localstack.com/api/v1/partner/listing/7d373c1da40cbfc3f165"</span>
   -H <span class="s2">"Authorization: Token token=YOUR-ACCESS-TOKEN"</span>
 </code></pre>
 
@@ -591,7 +591,7 @@ ACTIVE, f76ae9ceb01cf2904fe2, 11079728, https://www.mojopages.com/biz/instant-ph
     </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACTIVE"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"listing_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"f76ae9ceb01cf2904fe2"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"mojo_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"11079728"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"mojo_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.mojopages.com/biz/instant-phones-phoenix-az/11079728"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"mojo_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.localstack.com/biz/instant-phones-phoenix-az/11079728"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Instant Phones"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2415 E Thomas Rd"</span><span class="p">,</span><span class="w">
@@ -640,7 +640,7 @@ ACTIVE, f76ae9ceb01cf2904fe2, 11079728, https://www.mojopages.com/biz/instant-ph
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">GET https://api.mojopages.com/api/v1/partner/listing/:LISTING_ID</code></p>
+<p><code class="prettyprint">GET https://api.localstack.com/api/v1/partner/listing/:LISTING_ID</code></p>
 
 <h3 id="query-parameters">Query Parameters</h3>
 
@@ -681,7 +681,7 @@ You must replace `:LISTING_ID` with your business listing id.
 </tr>
 <tr>
 <td>ACTIVE</td>
-<td>This listing is fully activated and live on MojoPages.com.</td>
+<td>This listing is fully activated and live on LocalStack.com.</td>
 </tr>
 <tr>
 <td>SUPPRESSED</td>
@@ -698,7 +698,7 @@ You must replace `:LISTING_ID` with your business listing id.
 <blockquote>
 <p>Request example</p>
 </blockquote>
-<pre><code class="highlight shell">curl <span class="s2">"https://api.mojopages.com/api/v1/partner/listing/7d373c1da40cbfc3f165"</span>
+<pre><code class="highlight shell">curl <span class="s2">"https://api.localstack.com/api/v1/partner/listing/7d373c1da40cbfc3f165"</span>
   -H <span class="s2">"Authorization: Token token=YOUR-ACCESS-TOKEN"</span>
   -H <span class="s2">"Content-Type: application/json"</span>
   -X POST -d <span class="s1">'{"mojo_id": 201702, "name": "Piety Hill Cottages", "address": "523 Sacramento St", "tel": "(555) 555-5555", "locality": "Nevada City", "region": "CA", "postcode":"95959", "latitude": "47.288845", "longitude": "-101.0308", "hours": {"sunday":[["closed"]], "monday": [["8:00","16:00"]]}, "category_ids": [467]}'</span>
@@ -718,7 +718,7 @@ You must replace `:LISTING_ID` with your business listing id.
   </span><span class="s2">"listing"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"listing_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7d373c1da40cbfc3f165"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"mojo_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"201702"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"mojo_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.mojopages.com/biz/piety-hill-cottages-phoenix-az/201702"</span><span class="w">
+    </span><span class="s2">"mojo_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.localstack.com/biz/piety-hill-cottages-phoenix-az/201702"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
@@ -736,7 +736,7 @@ You must replace `:LISTING_ID` with your business listing id.
   </span><span class="s2">"listing"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"listing_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7d373c1da40cbfc3f165"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"mojo_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"201702"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"mojo_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.mojopages.com/biz/piety-hill-cottages-phoenix-az/201702"</span><span class="w">
+    </span><span class="s2">"mojo_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.localstack.com/biz/piety-hill-cottages-phoenix-az/201702"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
@@ -754,7 +754,7 @@ You must replace `:LISTING_ID` with your business listing id.
   </span><span class="s2">"listing"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"listing_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7d373c1da40cbfc3f165"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"mojo_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"201702"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"mojo_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.mojopages.com/biz/piety-hill-cottages-phoenix-az/201702"</span><span class="w">
+    </span><span class="s2">"mojo_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.localstack.com/biz/piety-hill-cottages-phoenix-az/201702"</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="s2">"error"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"messages"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -766,11 +766,11 @@ You must replace `:LISTING_ID` with your business listing id.
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
-<p>This endpoint is used to post a new business listings to MojoPages.</p>
+<p>This endpoint is used to post a new business listings to LocalStack.</p>
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">POST https://api.mojopages.com/api/v1/partner/listing/:LISTING_ID</code></p>
+<p><code class="prettyprint">POST https://api.localstack.com/api/v1/partner/listing/:LISTING_ID</code></p>
 
 <h3 id="query-parameters">Query Parameters</h3>
 
@@ -807,7 +807,7 @@ You must replace `:LISTING_ID` with your business listings id.
 </thead><tbody>
 <tr>
 <td>LIVE</td>
-<td>The Listing added or mapped is fully activated and live on MojoPages.com.</td>
+<td>The Listing added or mapped is fully activated and live on LocalStack.com.</td>
 </tr>
 <tr>
 <td>REJECTED</td>
@@ -936,7 +936,7 @@ You must replace `:LISTING_ID` with your business listings id.
 <tr>
 <td>category_ids</td>
 <td>true</td>
-<td>MojoPages Category ID&rsquo;s that you want business to be listed under array (max: 3)</td>
+<td>LocalStack Category ID&rsquo;s that you want business to be listed under array (max: 3)</td>
 </tr>
 <tr>
 <td>logo_url</td>
@@ -985,7 +985,7 @@ You must replace `:LISTING_ID` with your business listings id.
 <blockquote>
 <p>Request example</p>
 </blockquote>
-<pre><code class="highlight shell">curl <span class="s2">"https://api.mojopages.com/api/v1/partner/listing/7d373c1da40cbfc3f165"</span>
+<pre><code class="highlight shell">curl <span class="s2">"https://api.localstack.com/api/v1/partner/listing/7d373c1da40cbfc3f165"</span>
   -H <span class="s2">"Authorization: Token token=YOUR-ACCESS-TOKEN"</span>
   -H <span class="s2">"Content-Type: application/json"</span>
   -X PUT -d <span class="s1">'{"address": "523 Sacramento Streeet", "tel": "(800) 555-5555", "hours": {"sunday":[["closed"]], "monday": [["8:00","16:00"]]}}'</span>
@@ -1005,7 +1005,7 @@ You must replace `:LISTING_ID` with your business listings id.
   </span><span class="s2">"listing"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"listing_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7d373c1da40cbfc3f165"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"mojo_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"201702"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"mojo_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.mojopages.com/biz/piety-hill-cottages-phoenix-az/201702"</span><span class="w">
+    </span><span class="s2">"mojo_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.localstack.com/biz/piety-hill-cottages-phoenix-az/201702"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
@@ -1023,16 +1023,16 @@ You must replace `:LISTING_ID` with your business listings id.
   </span><span class="s2">"listing"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"listing_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7d373c1da40cbfc3f165"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"mojo_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"201702"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"mojo_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.mojopages.com/biz/piety-hill-cottages-phoenix-az/201702"</span><span class="w">
+    </span><span class="s2">"mojo_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.localstack.com/biz/piety-hill-cottages-phoenix-az/201702"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
-<p>This endpoint is used to put updated data for an existing business listing into MojoPages.</p>
+<p>This endpoint is used to put updated data for an existing business listing into LocalStack.</p>
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">PUT https://api.mojopages.com/api/v1/partner/listing/:LISTING_ID</code></p>
+<p><code class="prettyprint">PUT https://api.localstack.com/api/v1/partner/listing/:LISTING_ID</code></p>
 
 <h3 id="query-parameters">Query Parameters</h3>
 
@@ -1069,7 +1069,7 @@ You must replace `:LISTING_ID` with your business listings id.
 </thead><tbody>
 <tr>
 <td>LIVE</td>
-<td>The Listing added or mapped is fully activated and live on MojoPages.com.</td>
+<td>The Listing added or mapped is fully activated and live on LocalStack.com.</td>
 </tr>
 <tr>
 <td>REJECTED</td>
@@ -1175,7 +1175,7 @@ You must replace `:LISTING_ID` with your business listings id.
 </tr>
 <tr>
 <td>category_ids</td>
-<td>MojoPages Category ID&rsquo;s that you want business to be listed under array (max: 3)</td>
+<td>LocalStack Category ID&rsquo;s that you want business to be listed under array (max: 3)</td>
 </tr>
 <tr>
 <td>logo_url</td>
@@ -1216,7 +1216,7 @@ You must replace `:LISTING_ID` with your business listings id.
 <blockquote>
 <p>Request example</p>
 </blockquote>
-<pre><code class="highlight shell">curl <span class="s2">"https://api.mojopages.com/api/v1/partner/listing/7d373c1da40cbfc3f165"</span>
+<pre><code class="highlight shell">curl <span class="s2">"https://api.localstack.com/api/v1/partner/listing/7d373c1da40cbfc3f165"</span>
   -H <span class="s2">"Authorization: Token token=YOUR-ACCESS-TOKEN"</span>
 
 </code></pre>
@@ -1232,11 +1232,11 @@ You must replace `:LISTING_ID` with your business listings id.
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
-<p>This endpoint is used to delete an existing business listing from MojoPages.</p>
+<p>This endpoint is used to delete an existing business listing from LocalStack.</p>
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">DELETE https://api.mojopages.com/api/v1/partner/listing/:LISTING_ID</code></p>
+<p><code class="prettyprint">DELETE https://api.localstack.com/api/v1/partner/listing/:LISTING_ID</code></p>
 
 <h3 id="query-parameters">Query Parameters</h3>
 
@@ -1268,7 +1268,7 @@ You must replace `:LISTING_ID` with your business listings id.
 <blockquote>
 <p>Request example</p>
 </blockquote>
-<pre><code class="highlight shell">curl <span class="s2">"https://api.mojopages.com/api/v1/categories"</span>
+<pre><code class="highlight shell">curl <span class="s2">"https://api.localstack.com/api/v1/categories"</span>
   -H <span class="s2">"Authorization: Token token=YOUR-ACCESS-TOKEN"</span>
 </code></pre>
 
@@ -1296,7 +1296,7 @@ You must replace `:LISTING_ID` with your business listings id.
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">GET https://api.mojopages.com/api/v1/categories</code></p>
+<p><code class="prettyprint">GET https://api.localstack.com/api/v1/categories</code></p>
 
 <h3 id="query-parameters">Query Parameters</h3>
 
@@ -1319,7 +1319,7 @@ You must replace `:LISTING_ID` with your business listings id.
 <blockquote>
 <p>Request example</p>
 </blockquote>
-<pre><code class="highlight shell">curl <span class="s2">"https://api.mojopages.com/api/v1/categories/csv"</span>
+<pre><code class="highlight shell">curl <span class="s2">"https://api.localstack.com/api/v1/categories/csv"</span>
   -H <span class="s2">"Authorization: Token token=YOUR-ACCESS-TOKEN"</span> &gt;&gt; Categories.csv
 </code></pre>
 
@@ -1334,7 +1334,7 @@ You must replace `:LISTING_ID` with your business listings id.
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">GET https://api.mojopages.com/api/v1/categories/csv</code></p>
+<p><code class="prettyprint">GET https://api.localstack.com/api/v1/categories/csv</code></p>
 
 <h3 id="query-parameters">Query Parameters</h3>
 
@@ -1357,7 +1357,7 @@ You must replace `:LISTING_ID` with your business listings id.
 <blockquote>
 <p>Request example</p>
 </blockquote>
-<pre><code class="highlight shell">curl <span class="s2">"https://api.mojopages.com/api/v1/listings/search?name=Instant+Phones&amp;locality=Pheonix&amp;region=AZ"</span>
+<pre><code class="highlight shell">curl <span class="s2">"https://api.localstack.com/api/v1/listings/search?name=Instant+Phones&amp;locality=Pheonix&amp;region=AZ"</span>
   -H <span class="s2">"Authorization: Token token=YOUR-ACCESS-TOKEN"</span>
 </code></pre>
 
@@ -1372,7 +1372,7 @@ You must replace `:LISTING_ID` with your business listings id.
     </span><span class="p">{</span><span class="w">
       </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AVAILABLE"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"mojo_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"11079728"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"mojo_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.mojopages.com/biz/instant-phones-phoenix-az/11079728"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"mojo_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.localstack.com/biz/instant-phones-phoenix-az/11079728"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Instant Phones"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
       </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2415 E Thomas Rd"</span><span class="p">,</span><span class="w">
@@ -1414,11 +1414,11 @@ You must replace `:LISTING_ID` with your business listings id.
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
-<p>This endpoint allows you to search the MojoPages database like you would do on the site but with more specific attributes like Name, Address, Latitude, Longitude and Phone number.</p>
+<p>This endpoint allows you to search the LocalStack database like you would do on the site but with more specific attributes like Name, Address, Latitude, Longitude and Phone number.</p>
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">GET https://api.mojopages.com/api/v1/listings/search</code></p>
+<p><code class="prettyprint">GET https://api.localstack.com/api/v1/listings/search</code></p>
 
 <h3 id="query-parameters">Query Parameters</h3>
 
@@ -1503,7 +1503,7 @@ You must replace `:LISTING_ID` with your business listings id.
 </tr>
 <tr>
 <td>ACTIVE</td>
-<td>This listing is fully activated and live on MojoPages.com.</td>
+<td>This listing is fully activated and live on LocalStack.com.</td>
 </tr>
 <tr>
 <td>SUPPRESSED</td>
@@ -1520,7 +1520,7 @@ You must replace `:LISTING_ID` with your business listings id.
 <blockquote>
 <p>Request example</p>
 </blockquote>
-<pre><code class="highlight shell">curl <span class="s2">"https://api.mojopages.com/api/v1/listing/11079728"</span>
+<pre><code class="highlight shell">curl <span class="s2">"https://api.localstack.com/api/v1/listing/11079728"</span>
   -H <span class="s2">"Authorization: Token token=YOUR-ACCESS-TOKEN"</span>
 </code></pre>
 
@@ -1534,7 +1534,7 @@ You must replace `:LISTING_ID` with your business listings id.
   </span><span class="s2">"listing"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AVAILABLE"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"mojo_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"11079728"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"mojo_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.mojopages.com/biz/instant-phones-phoenix-az/11079728"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"mojo_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.localstack.com/biz/instant-phones-phoenix-az/11079728"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Instant Phones"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2415 E Thomas Rd"</span><span class="p">,</span><span class="w">
@@ -1584,7 +1584,7 @@ You must replace `:LISTING_ID` with your business listings id.
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">GET https://api.mojopages.com/api/v1/listing/:MOJO_ID</code></p>
+<p><code class="prettyprint">GET https://api.localstack.com/api/v1/listing/:MOJO_ID</code></p>
 
 <h3 id="query-parameters">Query Parameters</h3>
 
@@ -1623,7 +1623,7 @@ You must replace `:MOJO_ID` with your business listing id.
 </tr>
 <tr>
 <td>ACTIVE</td>
-<td>This listing is fully activated and live on MojoPages.com.</td>
+<td>This listing is fully activated and live on LocalStack.com.</td>
 </tr>
 <tr>
 <td>SUPPRESSED</td>
@@ -1640,7 +1640,7 @@ You must replace `:MOJO_ID` with your business listing id.
 <blockquote>
 <p>Request example</p>
 </blockquote>
-<pre><code class="highlight shell">curl <span class="s2">"https://api.mojopages.com/api/v1/listing/693acfb0-a323-44c5-8aa1-75baf9f99f3a/factual"</span>
+<pre><code class="highlight shell">curl <span class="s2">"https://api.localstack.com/api/v1/listing/693acfb0-a323-44c5-8aa1-75baf9f99f3a/factual"</span>
   -H <span class="s2">"Authorization: Token token=YOUR-ACCESS-TOKEN"</span>
 </code></pre>
 
@@ -1653,7 +1653,7 @@ You must replace `:MOJO_ID` with your business listing id.
   </span><span class="p">},</span><span class="w">
   </span><span class="s2">"listing"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"mojo_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"11079728"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"mojo_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.mojopages.com/biz/instant-phones-phoenix-az/11079728"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"mojo_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.localstack.com/biz/instant-phones-phoenix-az/11079728"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Instant Phones"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2415 E Thomas Rd"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"locality"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Pheonix"</span><span class="p">,</span><span class="w">
@@ -1666,7 +1666,7 @@ You must replace `:MOJO_ID` with your business listing id.
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">GET https://api.mojopages.com/api/v1/listing/:FACTUAL_LISTING_ID/factual</code></p>
+<p><code class="prettyprint">GET https://api.localstack.com/api/v1/listing/:FACTUAL_LISTING_ID/factual</code></p>
 
 <h3 id="query-parameters">Query Parameters</h3>
 
@@ -1698,12 +1698,12 @@ You must replace `:FACTUAL_LISTING_ID` with the business listings Factual id.
 <blockquote>
 <p>Request examples</p>
 </blockquote>
-<pre><code class="highlight shell">curl <span class="s2">"https://api.mojopages.com/api/v1/listing/11079728/suppress?reason=closed"</span>
+<pre><code class="highlight shell">curl <span class="s2">"https://api.localstack.com/api/v1/listing/11079728/suppress?reason=closed"</span>
   -H <span class="s2">"Authorization: Token token=YOUR-ACCESS-TOKEN"</span>
   -X POST
 
 </code></pre>
-<pre><code class="highlight shell">curl <span class="s2">"https://api.mojopages.com/api/v1/listing/11079728/suppress/4279039?reason=duplicate"</span>
+<pre><code class="highlight shell">curl <span class="s2">"https://api.localstack.com/api/v1/listing/11079728/suppress/4279039?reason=duplicate"</span>
   -H <span class="s2">"Authorization: Token token=YOUR-ACCESS-TOKEN"</span>
   -X POST
 
@@ -1720,13 +1720,13 @@ You must replace `:FACTUAL_LISTING_ID` with the business listings Factual id.
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
-<p>This endpoint is used to to suppress a duplicate or invalid listings on MojoPages. If a listing is SUPPRESSed, we will remove the listing from our site&rsquo;s search results. If a CANONICALLISTING_MOJO_ID is included in the path then a redirect is setup with 301 permenant redirection to the correct listing.</p>
+<p>This endpoint is used to to suppress a duplicate or invalid listings on LocalStack. If a listing is SUPPRESSed, we will remove the listing from our site&rsquo;s search results. If a CANONICALLISTING_MOJO_ID is included in the path then a redirect is setup with 301 permenant redirection to the correct listing.</p>
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">POST https://api.mojopages.com/api/v1/listing/:MOJO_ID/suppress</code></p>
+<p><code class="prettyprint">POST https://api.localstack.com/api/v1/listing/:MOJO_ID/suppress</code></p>
 
-<p><code class="prettyprint">POST https://api.mojopages.com/api/v1/listing/:MOJO_ID/suppress/:CANONICALLISTING_MOJO_ID</code></p>
+<p><code class="prettyprint">POST https://api.localstack.com/api/v1/listing/:MOJO_ID/suppress/:CANONICALLISTING_MOJO_ID</code></p>
 
 <h3 id="query-parameters">Query Parameters</h3>
 
@@ -1768,7 +1768,7 @@ You must replace `:MOJO_ID` with your duplicate business Mojo ID. You can also r
 <blockquote>
 <p>Request example</p>
 </blockquote>
-<pre><code class="highlight shell">curl <span class="s2">"https://api.mojopages.com/api/v1/listing/11079728/unsuppress"</span>
+<pre><code class="highlight shell">curl <span class="s2">"https://api.localstack.com/api/v1/listing/11079728/unsuppress"</span>
   -H <span class="s2">"Authorization: Token token=YOUR-ACCESS-TOKEN"</span>
   -X POST
 
@@ -1785,11 +1785,11 @@ You must replace `:MOJO_ID` with your duplicate business Mojo ID. You can also r
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
-<p>This endpoint is used to remove a redirect or suppression for a business listings to MojoPages. You need to be the one who originally suppressed the listing in order to unsupress it.</p>
+<p>This endpoint is used to remove a redirect or suppression for a business listings to LocalStack. You need to be the one who originally suppressed the listing in order to unsupress it.</p>
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">POST https://api.mojopages.com/api/v1/listing/:MOJO_ID/unsuppress</code></p>
+<p><code class="prettyprint">POST https://api.localstack.com/api/v1/listing/:MOJO_ID/unsuppress</code></p>
 
 <h3 id="query-parameters">Query Parameters</h3>
 
@@ -1828,7 +1828,7 @@ You must replace `:MOJO_ID` with your non duplicate business Mojo id.
 </thead><tbody>
 <tr>
 <td>11/13/2015</td>
-<td>Added Menu Url to partner listings</td>
+<td>Added Menu Url to partner listings and changed documentation from MojoPages to LocalStack</td>
 </tr>
 <tr>
 <td>6/29/2015</td>
@@ -1906,7 +1906,7 @@ You must replace `:MOJO_ID` with your non duplicate business Mojo id.
 
           <h1 id="errors">Errors</h1>
 
-<p>MojoPages API uses the following error codes:</p>
+<p>LocalStack API uses the following error codes:</p>
 
 <table><thead>
 <tr>
@@ -1946,7 +1946,7 @@ You must replace `:MOJO_ID` with your non duplicate business Mojo id.
 
           <h1 id="terms-and-conditions">Terms and Conditions</h1>
 
-<p>By using this API, you agree to the terms and conditions set forth at <a href="www.mojopages.com/api/terms_and_conditions">www.mojopages.com/terms_and_conditions</a>.</p>
+<p>By using this API, you agree to the terms and conditions set forth at <a href="www.localstack.com/terms-and-conditions">www.localstack.com/terms-and-conditions</a>.</p>
 
       </div>
       <div class="dark-box">
