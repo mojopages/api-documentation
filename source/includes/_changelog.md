@@ -4,6 +4,7 @@ Changes to the API and documentation are below.
 
 Date | Changes
 --------- | -----------
+6/3/2016 | Added initial social and listing endpoints for API V2
 11/13/2015 | Added Menu Url to partner listings and changed documentation from MojoPages to LocalStack
 6/29/2015 | Changed how we handle closed hours, day must now be left out of hours hash
 5/8/2015 | Added Description and changed listing_status in POST and PUT partner listings
