@@ -78,7 +78,9 @@ curl https://api.localstack.com/api/v1/status
 You must replace `YOUR-ACCESS-TOKEN` with your API key.
 </aside>
 
-<h1 id="listing-data-types">Listing Data Types</h1>
+          <h1 id="api-v1">API V1</h1>
+
+<h2 id="listing-data-types">Listing Data Types</h2>
 
 <blockquote>
 <p>Sample JSON Payload:</p>
@@ -297,7 +299,7 @@ You must replace `YOUR-ACCESS-TOKEN` with your API key.
 </tr>
 </tbody></table>
 
-<h1 id="getting-started-workflow">Getting Started Workflow</h1>
+<h2 id="getting-started-workflow">Getting Started Workflow</h2>
 
 <p>There are many ways and uses for the API. Here are the major typical workflows:</p>
 
@@ -316,8 +318,6 @@ You must replace `YOUR-ACCESS-TOKEN` with your API key.
 <p>4.C) <a href="#update-a-partner-listing">Update partner listing</a> - If you have claimed a listing and the status is active then you can update it at anytime and any parameters passed will be updated.</p>
 
 <p>5) <a href="#get-partner-listings-in-json">Get partner listings</a> - Lastly this will give you all your listings and the status of those listins in our database.</p>
-
-          <h1 id="api-v1">API V1</h1>
 
 <h2 id="get-status">Get Status</h2>
 
@@ -1816,6 +1816,531 @@ You must replace `:MOJO_ID` with your duplicate business Mojo ID. You can also r
 You must replace `:MOJO_ID` with your non duplicate business Mojo id.
 </aside>
 
+          <h1 id="api-v2">API V2</h1>
+
+<h2 id="get-localstack-listing-in-json">Get LocalStack Listing in JSON</h2>
+
+<blockquote>
+<p>Request example</p>
+</blockquote>
+<pre><code class="highlight shell">curl <span class="s2">"https://api.localstack.com/api/v2/listing/show.json?id=18"</span>
+  -H <span class="s1">'Authorization: Token token=YOUR-ACCESS-TOKEN'</span>
+</code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre><code class="highlight json"><span class="p">{</span><span class="w">
+    </span><span class="s2">"response"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="w">
+</span><span class="p">},</span><span class="w">
+    </span><span class="s2">"listing"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"localstack_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">18</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localstack.com/biz/red-roof-inn-palm-coast-palm-coast-fl/18"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Red Roof Inn Palm Coast"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10 Kingswood Dr"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"locality"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Palm Coast"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"region"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FL"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"postcode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"32137"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"tel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"(386) 446-8180"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"fax"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"website"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://www.redroof.com"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="s2">"29.552629"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-81.214269"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"exists"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"score"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"trend"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"media"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"activity"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+
+<p>This endpoint retrieves the LocalStack listing.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET https://api.localstack.com/api/v2/listing/show.json</code></p>
+
+<h3 id="query-parameters">Query Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>true</td>
+<td>Localstack ID is required</td>
+</tr>
+<tr>
+<td>access_token</td>
+<td>true</td>
+<td>Access token used to authenticate</td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Status Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>exists</td>
+<td>We consider this business to be in existence</td>
+</tr>
+<tr>
+<td>score</td>
+<td>Social score and data is available for this business</td>
+</tr>
+<tr>
+<td>trend</td>
+<td>Trending history is available for this business</td>
+</tr>
+<tr>
+<td>media</td>
+<td>Images and Videos are available for this business</td>
+</tr>
+<tr>
+<td>activity</td>
+<td>User Activity for Images, Videos, Posts and Tweets are available for this business</td>
+</tr>
+</tbody></table>
+
+<h2 id="get-social-score-in-json">Get Social Score in JSON</h2>
+
+<blockquote>
+<p>Request example</p>
+</blockquote>
+<pre><code class="highlight shell">curl <span class="s2">"https://api.localstack.com/api/v2/score/show.json?id=18"</span>
+  -H <span class="s1">'Authorization: Token token=YOUR-ACCESS-TOKEN'</span>
+</code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre><code class="highlight json"><span class="p">{</span><span class="w">
+    </span><span class="s2">"response"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="w">
+</span><span class="p">},</span><span class="w">
+    </span><span class="s2">"score"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"facebook"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"score"</span><span class="p">:</span><span class="w"> </span><span class="mi">38248</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"historical"</span><span class="p">:</span><span class="w"> </span><span class="mi">1052631</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"activity_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"user_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"shares"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"likes"</span><span class="p">:</span><span class="w"> </span><span class="mi">38220</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"checkins"</span><span class="p">:</span><span class="w"> </span><span class="mi">14</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"were_here"</span><span class="p">:</span><span class="w"> </span><span class="mi">14</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"talking_about"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"290003480162"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"src"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.facebook.com/redroofinn/"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"handle"</span><span class="p">:</span><span class="w"> </span><span class="s2">"redroofinn"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"shares_historical"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"likes_historical"</span><span class="p">:</span><span class="w"> </span><span class="mi">1037389</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"checkins_historical"</span><span class="p">:</span><span class="w"> </span><span class="mi">3697</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"were_here_historical"</span><span class="p">:</span><span class="w"> </span><span class="mi">3697</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"talking_about_historical"</span><span class="p">:</span><span class="w"> </span><span class="mi">7848</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Red Roof Inn"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"google_plus"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"score"</span><span class="p">:</span><span class="w"> </span><span class="mi">1966</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"historical"</span><span class="p">:</span><span class="w"> </span><span class="mi">183465</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"shares"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"followers"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"views"</span><span class="p">:</span><span class="w"> </span><span class="mi">1965</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"plus_ones"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"117370405116930240051"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"src"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://plus.google.com/117370405116930240051"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"handle"</span><span class="p">:</span><span class="w"> </span><span class="s2">"117370405116930240051"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"shares_historical"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"followers_historical"</span><span class="p">:</span><span class="w"> </span><span class="mi">779</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"views_historical"</span><span class="p">:</span><span class="w"> </span><span class="mi">182686</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"plus_ones_historical"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Red Roof Inn"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Red Roof Inn - A Nice Place, at a Nice Price... - Red Roof Inn® was incorporated by founder James R. Trueman in 1972. The brand’s first hotel opened in Columbus, Ohio, with a single room rate of $8.50 in 1973. Today, Red Roof® has nearly 350"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"twitter"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"score"</span><span class="p">:</span><span class="w"> </span><span class="mi">61</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"historical"</span><span class="p">:</span><span class="w"> </span><span class="mi">3259</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"activity_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">139</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"user_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">90</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"shares"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"followers"</span><span class="p">:</span><span class="w"> </span><span class="mi">61</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"109568694"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"src"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://twitter.com/redroofinn"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"handle"</span><span class="p">:</span><span class="w"> </span><span class="s2">"redroofinn"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"shares_historical"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"tweets_historical"</span><span class="p">:</span><span class="w"> </span><span class="mi">3150</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"followers_historical"</span><span class="p">:</span><span class="w"> </span><span class="mi">3259</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"following_historical"</span><span class="p">:</span><span class="w"> </span><span class="mi">521</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"favorites_historical"</span><span class="p">:</span><span class="w"> </span><span class="mi">2078</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"listed_historical"</span><span class="p">:</span><span class="w"> </span><span class="mi">82</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Red Roof Inn"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The Official Red Roof Inn Twitter page."</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"location"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Columbus, OH, USA"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"joined"</span><span class="p">:</span><span class="w"> </span><span class="s2">"January 2010"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"instagram"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"score"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"historical"</span><span class="p">:</span><span class="w"> </span><span class="mi">1911</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"activity_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">748</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"user_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">288</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"followers"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"204436816"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"src"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://instagram.com/redroofinn"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"handle"</span><span class="p">:</span><span class="w"> </span><span class="s2">"redroofinn"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"media_historical"</span><span class="p">:</span><span class="w"> </span><span class="mi">436</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"followers_historical"</span><span class="p">:</span><span class="w"> </span><span class="mi">1911</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"following_historical"</span><span class="p">:</span><span class="w"> </span><span class="mi">549</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Red Roof® is the leader in the economy hotel sector, creating for you the best opportunity to get more out of your travel experience."</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"webite"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.redroof.com/"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"like"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"score"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"historical"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"totals"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"score"</span><span class="p">:</span><span class="w"> </span><span class="mi">750</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"historical"</span><span class="p">:</span><span class="w"> </span><span class="mi">1241266</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+
+<p>This endpoint retrieves the Social score and data for a LocalStack listing.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET https://api.localstack.com/api/v2/score/show.json</code></p>
+
+<h3 id="query-parameters">Query Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>true</td>
+<td>Localstack ID is required</td>
+</tr>
+<tr>
+<td>access_token</td>
+<td>true</td>
+<td>Access token used to authenticate</td>
+</tr>
+</tbody></table>
+
+<h2 id="get-social-trends-in-json">Get Social Trends in JSON</h2>
+
+<blockquote>
+<p>Request example</p>
+</blockquote>
+<pre><code class="highlight shell">curl <span class="s2">"https://api.localstack.com/api/v2/trend/show.json?id=18"</span>
+  -H <span class="s1">'Authorization: Token token=YOUR-ACCESS-TOKEN'</span>
+</code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre><code class="highlight json"><span class="p">{</span><span class="w">
+    </span><span class="s2">"response"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="w">
+</span><span class="p">},</span><span class="w">
+    </span><span class="s2">"trend"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"2016-05-29"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"facebook_likes"</span><span class="p">:</span><span class="w"> </span><span class="mi">1037389</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"facebook_checkins"</span><span class="p">:</span><span class="w"> </span><span class="mi">3697</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"facebook_were_here"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"facebook_talking_about"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"twitter_followers"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"google_plus_ones"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"google_plus_followers"</span><span class="p">:</span><span class="w"> </span><span class="mi">779</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"google_plus_views"</span><span class="p">:</span><span class="w"> </span><span class="mi">182686</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"instagram_followed_by"</span><span class="p">:</span><span class="w"> </span><span class="mi">1911</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">1226462</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"mean"</span><span class="p">:</span><span class="w"> </span><span class="mf">1222604.2173913</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"sd"</span><span class="p">:</span><span class="w"> </span><span class="mf">4905.00063339553</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"sats"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.786499920597354</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+
+<p>This endpoint retrieves up to 30 days of the social trending data for a LocalStack listing.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET https://api.localstack.com/api/v2/trend/show.json</code></p>
+
+<h3 id="query-parameters">Query Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>true</td>
+<td>Localstack ID is required</td>
+</tr>
+<tr>
+<td>access_token</td>
+<td>true</td>
+<td>Access token used to authenticate</td>
+</tr>
+</tbody></table>
+
+<h2 id="get-social-media-in-json">Get Social Media in JSON</h2>
+
+<blockquote>
+<p>Request example</p>
+</blockquote>
+<pre><code class="highlight shell">curl <span class="s2">"https://api.localstack.com/api/v2/media/show.json?id=18"</span>
+  -H <span class="s1">'Authorization: Token token=YOUR-ACCESS-TOKEN'</span>
+</code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre><code class="highlight json"><span class="p">{</span><span class="w">
+    </span><span class="s2">"response"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"pagination"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"next_page"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"prev_page"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"total_pages"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"current_page"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"media"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"src"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.facebook.com/redroofinn/photos/a.322011875162.155386.290003480162/10153067551575163/"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"network"</span><span class="p">:</span><span class="w"> </span><span class="s2">"facebook"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"image"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"score"</span><span class="p">:</span><span class="w"> </span><span class="mi">1097</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"sentiment"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.999956169</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"date"</span><span class="p">:</span><span class="w"> </span><span class="mi">1445458161</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://graph.facebook.com/10153067551575163/picture/?width=400&amp;height=400&amp;type=normal"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"likes"</span><span class="p">:</span><span class="w"> </span><span class="mi">941</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"comments"</span><span class="p">:</span><span class="w"> </span><span class="mi">93</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"shares"</span><span class="p">:</span><span class="w"> </span><span class="mi">63</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"location"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+
+<p>This endpoint retrieves Images and Videos that are available for a LocalStack listing.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET https://api.localstack.com/api/v2/media/show.json</code></p>
+
+<h3 id="query-parameters">Query Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>true</td>
+<td>Localstack ID is required</td>
+</tr>
+<tr>
+<td>access_token</td>
+<td>true</td>
+<td>Access token used to authenticate</td>
+</tr>
+<tr>
+<td>page</td>
+<td>false</td>
+<td>When not included you&rsquo;ll get a very fast cached first page, when included it&rsquo;ll allow you to more slowly paginate</td>
+</tr>
+</tbody></table>
+
+<h2 id="get-social-activity-in-json">Get Social Activity in JSON</h2>
+
+<blockquote>
+<p>Request example</p>
+</blockquote>
+<pre><code class="highlight shell">curl <span class="s2">"https://api.localstack.com/api/v2/activity/show.json?id=18"</span>
+  -H <span class="s1">'Authorization: Token token=YOUR-ACCESS-TOKEN'</span>
+</code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre><code class="highlight json"><span class="p">{</span><span class="w">
+    </span><span class="s2">"response"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"pagination"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"next_page"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"prev_page"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"total_pages"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"current_page"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"activity"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"src"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://twitter.com/phrock1055/status/729705621319258112"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"network"</span><span class="p">:</span><span class="w"> </span><span class="s2">"twitter"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"image"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tweeted"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rock 105.5"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"sentiment"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.7243863214</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"date"</span><span class="p">:</span><span class="w"> </span><span class="mi">1464609247</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3187125399"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"handle"</span><span class="p">:</span><span class="w"> </span><span class="s2">"phrock1055"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"gender"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://pbs.twimg.com/profile_images/730085968196341760/J1KHgqx9_bigger.jpg"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"likes"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"shares"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"location"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+
+<p>This endpoint retrieves User Activity for Images, Videos, Posts and Tweets that are available for a LocalStack listing.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET https://api.localstack.com/api/v2/activity/show.json</code></p>
+
+<h3 id="query-parameters">Query Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>true</td>
+<td>Localstack ID is required</td>
+</tr>
+<tr>
+<td>access_token</td>
+<td>true</td>
+<td>Access token used to authenticate</td>
+</tr>
+<tr>
+<td>page</td>
+<td>false</td>
+<td>When not included you&rsquo;ll get a very fast cached first page, when included it&rsquo;ll allow you to more slowly paginate</td>
+</tr>
+</tbody></table>
+
+<h2 id="get-factual-listing-in-json">Get Factual Listing in JSON</h2>
+
+<blockquote>
+<p>Request example</p>
+</blockquote>
+<pre><code class="highlight shell">curl <span class="s2">"https://api.localstack.com/api/v2/factual/show.json?id=99db4cc4-875c-4238-8b94-8f58a11bdbc2"</span>
+  -H <span class="s1">'Authorization: Token token=YOUR-ACCESS-TOKEN'</span>
+</code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre><code class="highlight json"><span class="p">{</span><span class="w">
+    </span><span class="s2">"response"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"factual"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"localstack_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">18</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"factual_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"99db4cc4-875c-4238-8b94-8f58a11bdbc2"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"exists"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"score"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"trend"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"media"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"activity"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+
+<p>This endpoint retrieves the LocalStack listing.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET https://api.localstack.com/api/v2/factual/show.json</code></p>
+
+<h3 id="query-parameters">Query Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>true</td>
+<td>Localstack ID is required</td>
+</tr>
+<tr>
+<td>access_token</td>
+<td>true</td>
+<td>Access token used to authenticate</td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Status Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>exists</td>
+<td>We consider this business to be in existence</td>
+</tr>
+<tr>
+<td>score</td>
+<td>Social score and data is available for this business</td>
+</tr>
+<tr>
+<td>trend</td>
+<td>Trending history is available for this business</td>
+</tr>
+<tr>
+<td>media</td>
+<td>Images and Videos are available for this business</td>
+</tr>
+<tr>
+<td>activity</td>
+<td>User Activity for Images, Videos, Posts and Tweets are available for this business</td>
+</tr>
+</tbody></table>
+
           <h1 id="changelog">Changelog</h1>
 
 <p>Changes to the API and documentation are below.</p>
@@ -1826,6 +2351,10 @@ You must replace `:MOJO_ID` with your non duplicate business Mojo id.
 <th>Changes</th>
 </tr>
 </thead><tbody>
+<tr>
+<td>6/3/2016</td>
+<td>Added initial social and listing endpoints for API V2</td>
+</tr>
 <tr>
 <td>11/13/2015</td>
 <td>Added Menu Url to partner listings and changed documentation from MojoPages to LocalStack</td>
