@@ -17,7 +17,7 @@ curl "https://api.localstack.com/api/v2/listing/show.json?id=18"
         "status": 200
 },
     "listing": {
-        "localstack_id": 18,
+        "id": 18,
         "url": "http://localstack.com/biz/red-roof-inn-palm-coast-palm-coast-fl/18",
         "name": "Red Roof Inn Palm Coast",
         "address": "10 Kingswood Dr",
@@ -366,12 +366,12 @@ page | false | When not included you'll get a very fast cached first page, when 
 
 
 
-## Get Factual Listing in JSON
+## Get Listing by Factual ID in JSON
 
 > Request example
 
 ```shell
-curl "https://api.localstack.com/api/v2/factual/show.json?id=99db4cc4-875c-4238-8b94-8f58a11bdbc2"
+curl "https://api.localstack.com/api/v2/factual/show.json?factual_id=99db4cc4-875c-4238-8b94-8f58a11bdbc2"
   -H 'Authorization: Token token=YOUR-ACCESS-TOKEN'
 ```
 
@@ -383,7 +383,7 @@ curl "https://api.localstack.com/api/v2/factual/show.json?id=99db4cc4-875c-4238-
         "status": 200
     },
     "factual": {
-        "localstack_id": 18,
+        "id": 18,
         "factual_id": "99db4cc4-875c-4238-8b94-8f58a11bdbc2",
         "exists": true,
         "score": true,
@@ -405,7 +405,7 @@ This endpoint retrieves the LocalStack listing.
 
 Parameter | Required | Description
 --------- | ------- | -----------
-id | true | Localstack ID is required
+id or factual_id | true | Localstack or Factual ID is required
 access_token | true | Access token used to authenticate
 
 Status Type | Description
