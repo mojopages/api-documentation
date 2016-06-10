@@ -29,6 +29,20 @@ curl "https://api.localstack.com/api/v2/listing/show.json?id=18"
         "website": "http://www.redroof.com",
         "latitude": "29.552629",
         "longitude": "-81.214269",
+        "categories": [
+            {
+                "id": 430,
+                "title": "Travel"
+            },
+            {
+                "id": 432,
+                "title": "Lodging"
+            },
+            {
+                "id": 436,
+                "title": "Hotels and Motels"
+            }
+        ],
         "exists": true,
         "score": true,
         "trend": true,
